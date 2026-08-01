@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en" class="w-mod-js">
+<head>
+<meta charset="utf-8">
+<title>Littlebird: AI Assistant With a Memory of Your Work</title>
+<meta name="description" content="Littlebird remembers everything across your meetings, messages, docs, and apps, then takes action so you can recall any detail and never lose context.">
+<meta property="og:title" content="Littlebird: AI Assistant With a Memory of Your Work">
+<meta property="og:description" content="Littlebird remembers everything across your meetings, messages, docs, and apps, then takes action so you can recall any detail and never lose context.">
+<meta name="twitter:title" content="Littlebird: AI Assistant With a Memory of Your Work">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" sizes="32x32" href="images/footerbiglogo.svg">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="body">
+
+<!-- ============================ NAV ============================ -->
+<nav class="nav_wrap">
+  <div class="nav-blur"><i class="c"></i><i class="a"></i></div>
+  <div class="nav_side">
+    <a href="/" class="nav_logo_link w-inline-block w--current" aria-current="page">
+      <img src="images/logo.svg" alt="Littlebird" class="nav_logo">
+    </a>
+  </div>
+  <div class="nav_links">
+    <div class="nav_dropdown">
+      <button aria-haspopup="true" type="button" class="nav_dd_toggle w-button">Features
+        <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="nav_dd_caret"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      </button>
+      <div class="nav_dd_panel">
+        <div class="nav_mega_card">
+          <div class="nav_mega_intro">
+            <p class="nav_mega_intro_title">Everything in one place.</p>
+            <p class="nav_mega_intro_desc">One quiet assistant that remembers your work, sits in on your meetings, and acts when it matters.</p>
+          </div>
+          <div class="nav_mega_items">
+            <a href="/features/chat" class="nav_dd_item"><span class="nav_dd_item_title">Chat</span><span class="nav_dd_item_desc">Your AI with the full picture</span></a>
+            <a href="/features/meeting-notes" class="nav_dd_item"><span class="nav_dd_item_title">Meeting Notes</span><span class="nav_dd_item_desc">Notes that write themselves</span></a>
+            <a href="/features/routines" class="nav_dd_item"><span class="nav_dd_item_title">Routines</span><span class="nav_dd_item_desc">Insights from your real work</span></a>
+            <a href="/features/hummingbird" class="nav_dd_item"><span class="nav_dd_item_title">Hummingbird</span><span class="nav_dd_item_desc">Littlebird wherever you're working</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nav_dropdown">
+      <button aria-haspopup="true" type="button" class="nav_dd_toggle w-button">Use Cases
+        <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="nav_dd_caret"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      </button>
+      <div class="nav_dd_panel">
+        <div class="nav_mega_card">
+          <div class="nav_mega_intro">
+            <p class="nav_mega_intro_title">Built for how you work</p>
+            <p class="nav_mega_intro_desc">Littlebird adapts to your role — from leadership and client-facing teams to technical, creative, and personal work.</p>
+          </div>
+          <div class="nav_uc_items">
+            <a href="/use-cases/leadership" class="nav_dd_item"><span class="nav_dd_item_title">Business Leadership</span><span class="nav_dd_item_desc">Founders, executives, managers</span></a>
+            <a href="/use-cases/creative" class="nav_dd_item"><span class="nav_dd_item_title">Creative &amp; Design</span><span class="nav_dd_item_desc">Designers, writers, marketers</span></a>
+            <a href="/use-cases/technical" class="nav_dd_item"><span class="nav_dd_item_title">Technical</span><span class="nav_dd_item_desc">Engineers, PMs, analysts</span></a>
+            <a href="/use-cases/personal" class="nav_dd_item"><span class="nav_dd_item_title">Personal</span><span class="nav_dd_item_desc">Students, job seekers, side hustlers</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nav_dropdown">
+      <button aria-haspopup="true" type="button" class="nav_dd_toggle w-button">Resources
+        <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="nav_dd_caret"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      </button>
+      <div class="nav_dd_panel">
+        <div class="nav_mega_card">
+          <div class="nav_mega_intro">
+            <p class="nav_mega_intro_title">Helpful things to read</p>
+            <p class="nav_mega_intro_desc">Guides, changelog, and everything new from the Littlebird team.</p>
+          </div>
+          <div class="nav_mega_items">
+            <a href="/blog" class="nav_dd_item"><span class="nav_dd_item_title">Blog</span><span class="nav_dd_item_desc">Product news and deep dives</span></a>
+            <a href="/changelog" class="nav_dd_item"><span class="nav_dd_item_title">Changelog</span><span class="nav_dd_item_desc">What&rsquo;s new and shipping</span></a>
+            <a href="/download" class="nav_dd_item"><span class="nav_dd_item_title">Downloads</span><span class="nav_dd_item_desc">Get Littlebird on your devices</span></a>
+            <a href="/support" class="nav_dd_item"><span class="nav_dd_item_title">Support</span><span class="nav_dd_item_desc">Help when you need it</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span class="nav_divider"></span>
+    <div class="cta_group">
+      <a data-download-windows="true" href="#" class="nav_cta cta-windows w-inline-block" style="display:flex;">
+        <img src="images/icon-windows.svg" alt="Windows" class="os_icon_light"><span class="text-span-20">Download</span>
+      </a>
+      <a data-download="true" href="#" class="nav_cta cta-mac-as w-inline-block" style="display:none;">
+        <img src="images/icon-apple.svg" alt="Apple" class="os_icon_light"><span class="text-span-20">Download</span>
+      </a>
+      <a href="#" class="nav_cta cta-ios w-inline-block" style="display:none;">
+        <img src="images/icon-send.svg" alt="Send" class="os_icon_light"><span class="text-span-20">Get the app</span>
+      </a>
+      <a href="#" class="nav_cta cta-android w-inline-block" style="display:none;">
+        <img src="images/icon-send.svg" alt="Send" class="os_icon_light"><span class="text-span-20">Get the app</span>
+      </a>
+    </div>
+  </div>
+  <button data-nav-burger class="nav_burger" aria-expanded="false" aria-label="Menu">
+    <span class="nav_burger_bar"></span>
+    <span class="nav_burger_bar"></span>
+    <span class="nav_burger_bar"></span>
+  </button>
+</nav>
+
+<!-- mobile nav panel -->
+<div data-nav-mobile class="nav_mobile_panel">
+  <a href="/features/chat" class="nav_mobile_link">Features</a>
+  <a href="/use-cases/leadership" class="nav_mobile_link">Use Cases</a>
+  <a href="/blog" class="nav_mobile_link">Resources</a>
+  <a href="#" class="nav_cta cta-windows w-inline-block" style="display:flex;align-self:center;margin-top:12px;">
+    <img src="images/icon-windows.svg" alt="Windows" class="os_icon_light"><span class="text-span-20">Download</span>
+  </a>
+</div>
+
+<!-- ============================ HERO + CARDS ============================ -->
+<section class="cards_section">
+  <header class="section_hero">
+    <div class="hero_vid w-background-video">
+      <video autoplay loop muted playsinline style="background-image:url('images/hero-poster.jpg')" data-object-fit="cover">
+        <source src="images/hero-video.mp4" type="video/mp4">
+        <source src="images/hero-video.webm" type="video/webm">
+      </video>
+    </div>
+    <div class="hero_content">
+      <h1 class="hero_heading">Remember everything</h1>
+      <p class="hero_subhead">Littlebird remembers all of your work and can take action across meetings, messages, docs and apps.</p>
+      <div id="cta-hero" class="cta_group">
+        <div class="cta-mac stack" style="display:none;">
+          <a data-download="true" href="#" class="btn_primary w-inline-block">
+            <img src="images/icon-apple.svg" loading="lazy" data-os-icon="true" alt="" class="os_icon_light"><span data-os-label="true" class="text-span-19">Download for free</span>
+          </a>
+          <p id="primary-download-fineprint" class="hero_fineprint">Beta &middot; Windows 10+</p>
+        </div>
+        <a data-download-windows="true" href="#" class="btn_primary cta-windows w-inline-block" style="display:flex;">
+          <img src="images/icon-windows.svg" loading="lazy" alt="Windows" class="os_icon_light"><span class="text-span-19">Download for free</span>
+        </a>
+        <a href="#" class="btn_primary cta-ios w-inline-block" style="display:none;">
+          <img src="images/icon-send.svg" loading="lazy" alt="Send" class="os_icon_light"><span class="text-span-19">Send download link</span>
+        </a>
+        <a href="#" class="btn_primary cta-android w-inline-block" style="display:none;">
+          <img src="images/icon-send.svg" loading="lazy" alt="Send" class="os_icon_light"><span class="text-span-19">Send download link</span>
+        </a>
+      </div>
+    </div>
+    <div class="hero_demo">
+      <iframe src="embeds/hero-tabs-animation-responsive-2.html" title="Littlebird product demo" loading="eager" frameborder="0" scrolling="no" allowtransparency="true" data-lb-hero="true" class="hero_embed hero_embed" style="height: 701px;"></iframe>
+    </div>
+  </header>
+
+  <div class="cards_stage">
+    <img src="images/cards-rays.svg" loading="lazy" alt="Rays flowing down" class="cards_rays">
+    <img src="images/card-tasks.svg" loading="lazy" alt="Tasks card: Finish onboarding flow" class="lb_card reveal flow_top card_p0" style="transform:translate(-25.5px,-99.5px) scale(.45);">
+    <img src="images/card-meeting.svg" loading="lazy" alt="Meeting reminder card: quarterly review starting in 30 minutes" class="lb_card reveal flow_top card_p1" style="transform:translate(545px,-182.5px) scale(.45);">
+    <img src="images/card-gmail.svg" loading="lazy" alt="Gmail card: Re Contract renewal Legal" class="lb_card reveal flow_top card_p2" style="transform:translate(238.5px,-235.5px) scale(.45);">
+    <img src="images/card-people.svg" loading="lazy" alt="Memory card: Sarah is your manager, she usually needs things before Friday" class="lb_card reveal flow_top card_p3" style="transform:translate(-223.5px,-245.5px) scale(.45);">
+    <img src="images/card-podcast.svg" loading="lazy" alt="Podcast card: Tony Fadell on product judgment AI cannot replace" class="lb_card reveal flow_top card_p4" style="transform:translate(-495.5px,-321.5px) scale(.45);">
+    <img src="images/card-slack.svg" loading="lazy" alt="Slack card: Sarah asking to send the deck before 2pm" class="lb_card reveal card_p5" style="transform:translate(507.5px,-442px) scale(.45);">
+    <img src="images/card-meeting-summary.svg" loading="lazy" alt="Meeting summary card: Growth Strategy" class="lb_card reveal card_p6" style="transform:translate(-524px,-601px) scale(.45);">
+    <img src="images/card-biology.svg" loading="lazy" alt="Article card: Why Are Cells Small, Biology is a Burrito" class="lb_card reveal card_p7" style="transform:translate(484.5px,-680px) scale(.45);">
+    <img src="images/card-preferences.svg" loading="lazy" alt="Preferences card: you'd rather get a draft to react to than a blank page" class="lb_card reveal card_p8" style="transform:translate(228.5px,-720px) scale(.45);">
+    <img src="images/card-sheets.svg" loading="lazy" alt="Sheets card: Budget Q3 row highlighted" class="lb_card reveal card_p9" style="transform:translate(-30.5px,-789.5px) scale(.45);">
+    <img src="images/card-current-focus.svg" loading="lazy" alt="Current focus card: you've been heads-down on the onboarding flow this week" class="lb_card reveal card_p10" style="transform:translate(-275px,-723px) scale(.45);">
+    <div class="cards_heading_wrap">
+      <h2 class="cards_heading">Ask anything. It knows your work.</h2>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ APP SECTION 1 ============================ -->
+<section class="section_apps">
+  <div class="apps_wrap">
+    <div class="apps_left">
+      <div class="apps_textgroup feat_o1">
+        <h2 class="features-title">An assistant across all your apps</h2>
+        <p class="features_subhead">Get your work done without leaving the chat, Littlebird knows.</p>
+      </div>
+      <div class="apps_quote_card feat_o4">
+        <p class="apps_quote_mark">&ldquo;</p>
+        <div class="apps_quote_body">
+          <p class="features_quote_text">Littlebird is both my personal assistant and researcher. It's simply the best personal productivity tool I've ever tried.</p>
+          <div class="apps_quote_author">
+            <p class="features_quote_name">Brian Clegg</p>
+            <p class="features_quote_role">Author</p>
+          </div>
+        </div>
+        <img src="images/testi-brian-clegg.webp" loading="lazy" alt="Brian Clegg" class="apps_avatar">
+      </div>
+      <a href="/features/chat" class="meet_btn feat_o2 w-inline-block">
+        <p class="meet_btn_text">Learn more</p>
+        <img src="images/icon-arrow-right.svg" loading="lazy" alt="arrow right" class="meet_btn_arrow_icon">
+      </a>
+    </div>
+    <div class="apps_embed_wrap feat_o3">
+      <iframe title="Littlebird works across your apps" loading="lazy" frameborder="0" data-src="embeds/apps-animation.html" scrolling="no" class="apps_embed"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ APP SECTION 2 (meeting notes) ============================ -->
+<section class="section_apps">
+  <div class="apps_wrap">
+    <div class="meet_embed_wrap feat_o3" data-meet>
+      <iframe title="Littlebird meeting notes" loading="lazy" frameborder="0" data-src="embeds/meetings-animation-2.html" scrolling="no" class="apps_embed"></iframe>
+    </div>
+    <div class="meet_text feat_o1">
+      <div class="apps_textgroup">
+        <h2 class="features-title">Never take meeting notes again</h2>
+        <p class="features_subhead">Perfect notes from every meeting you've had, and a full prep for every meeting you haven't.</p>
+      </div>
+      <a href="/features/meeting-notes" class="meet_btn w-inline-block">
+        <p class="meet_btn_text">Learn more</p>
+        <img src="images/icon-arrow-right.svg" loading="lazy" alt="arrow right" class="meet_btn_arrow_icon">
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ APP SECTION 3 (routines) ============================ -->
+<section class="section_apps">
+  <div class="apps_wrap">
+    <div class="apps_left">
+      <div class="apps_textgroup feat_o1">
+        <h2 class="features-title">Automate your schedules and briefs</h2>
+        <p class="features_subhead">Set up a daily routine - a morning briefing, a weekly project update, whatever you want, whenever you want it.</p>
+      </div>
+      <div class="apps_quote_card feat_o4">
+        <p class="apps_quote_mark">&ldquo;</p>
+        <div class="apps_quote_body">
+          <p class="features_quote_text">Littlebird helps me set up my day with intention. Not a vague to-do list. An actual plan that reflects what I need to get done and when.</p>
+          <div class="apps_quote_author">
+            <p class="features_quote_name">Gretchen Schoser</p>
+            <p class="features_quote_role">Mental Health Advocate &amp; Podcast Host</p>
+          </div>
+        </div>
+        <img src="images/testi-gretchen-schoser.jpeg" loading="lazy" alt="Gretchen Schoser" class="apps_avatar">
+      </div>
+      <a href="/features/routines" class="meet_btn feat_o2 w-inline-block">
+        <p class="meet_btn_text">Learn more</p>
+        <img src="images/icon-arrow-right.svg" loading="lazy" alt="arrow right" class="meet_btn_arrow_icon">
+      </a>
+    </div>
+    <div class="meet_embed_wrap feat_o3">
+      <iframe title="Littlebird routines and briefs" loading="lazy" frameborder="0" data-src="embeds/routines-animation-duo-2.html" scrolling="no" class="apps_embed"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ APP SECTION 4 (drafting) ============================ -->
+<section class="section_apps">
+  <div class="apps_wrap">
+    <div class="meet_embed_wrap feat_o3" data-draft>
+      <iframe title="Littlebird drafting" loading="lazy" frameborder="0" data-src="embeds/drafting-animation-1.html" scrolling="no" class="apps_embed"></iframe>
+    </div>
+    <div class="meet_text feat_o1">
+      <div class="apps_textgroup">
+        <h2 class="features-title">From blank page to final draft</h2>
+        <p class="features_subhead">Littlebird understands you, so it drafts emails, docs, and updates in your voice</p>
+      </div>
+      <a href="/features/chat" class="meet_btn w-inline-block">
+        <p class="meet_btn_text">Learn more</p>
+        <img src="images/icon-arrow-right.svg" loading="lazy" alt="arrow right" class="meet_btn_arrow_icon">
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ HUMMINGBIRD ============================ -->
+<section class="section_humming">
+  <div class="humming_card">
+    <img src="images/hummingbird-composite.webp" loading="lazy" alt="Littlebird Hummingbird overlay on a Chrome browser window" class="humming_bg">
+    <img src="images/humming-bg-mobile.webp" loading="lazy" alt="Littlebird Hummingbird on a phone screen" class="humming_bg_m">
+    <div class="humming_overlay">
+      <div class="humming_textcol">
+        <h2 class="humming_title_v">Hummingbird, the AI on every screen</h2>
+        <p class="humming_sub_v">Littlebird appears wherever you're working, with a single tap.</p>
+      </div>
+      <a href="/features/hummingbird" class="humming_hotspot w-inline-block">
+        <p class="humming_btn_text">Learn more</p>
+        <img src="images/icon-arrow-right.svg" loading="lazy" alt="arrow" class="humming-arrow-icon">
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ DEVICE SECTION ============================ -->
+<section class="section_apps">
+  <div class="apps_wrap">
+    <div class="device_left">
+      <div class="apps_textgroup">
+        <h2 class="features-title">For every device you&rsquo;re on</h2>
+        <p class="features_subhead">Littlebird now lives on your phone too - so the assistant that knows your work is with you everywhere you go.</p>
+      </div>
+      <div class="device_badges">
+        <p class="device_avail">Available on</p>
+        <a href="/download" class="device_badge w-inline-block">
+          <img src="images/apple-logo-dark.svg" loading="lazy" alt="Apple" class="device_badge_icon"><p class="device_badge_text">iOS</p>
+        </a>
+        <a href="/download" class="device_badge w-inline-block">
+          <img src="images/icon-android.svg" loading="lazy" alt="Android" class="device_badge_icon"><p class="device_badge_text">Android</p>
+        </a>
+      </div>
+    </div>
+    <img src="images/device-phone-composite.webp" loading="lazy" alt="Littlebird running on a phone with a hummingbird beside it" class="device_visual">
+  </div>
+</section>
+
+<!-- ============================ MARQUEE ============================ -->
+<div class="sp-marquee-section">
+  <div class="w-embed"></div>
+  <div class="sp-marquee-label">Used by some of the most successful people at organizations like</div>
+  <div class="sp-marquee-viewport">
+    <div class="sp-marquee-track">
+      <img src="images/marquee/sp-stanford.svg" loading="lazy" data-logo="stanford" alt="Stanford University" class="sp-marquee-logo">
+      <img src="images/marquee/sp-zendesk.svg" loading="lazy" data-logo="zendesk" alt="Zendesk" class="sp-marquee-logo">
+      <img src="images/marquee/sp-ford.svg" loading="lazy" data-logo="ford" alt="Ford" class="sp-marquee-logo">
+      <img src="images/marquee/sp-netflix.svg" loading="lazy" data-logo="netflix" alt="Netflix" class="sp-marquee-logo">
+      <img src="images/marquee/sp-snowflake.svg" loading="lazy" data-logo="snowflake" alt="Snowflake" class="sp-marquee-logo">
+      <img src="images/marquee/sp-yale.svg" loading="lazy" data-logo="yale" alt="Yale" class="sp-marquee-logo">
+      <img src="images/marquee/sp-mit.svg" loading="lazy" data-logo="mit" alt="MIT" class="sp-marquee-logo">
+      <img src="images/marquee/sp-nvidia.svg" loading="lazy" data-logo="nvidia" alt="NVIDIA" class="sp-marquee-logo">
+      <img src="images/marquee/sp-nyu.svg" loading="lazy" data-logo="nyu" alt="NYU" class="sp-marquee-logo">
+      <img src="images/marquee/sp-vogue.svg" loading="lazy" data-logo="vogue" alt="Vogue" class="sp-marquee-logo">
+      <img src="images/marquee/sp-siemens.svg" loading="lazy" data-logo="siemens" alt="Siemens" class="sp-marquee-logo">
+      <img src="images/marquee/sp-rippling.svg" loading="lazy" data-logo="rippling" alt="Rippling" class="sp-marquee-logo">
+      <img src="images/marquee/sp-condenast.svg" loading="lazy" data-logo="condenast" alt="Condé Nast" class="sp-marquee-logo">
+      <img src="images/marquee/sp-dhl.svg" loading="lazy" data-logo="dhl" alt="DHL" class="sp-marquee-logo">
+      <!-- duplicate set for seamless -50% loop -->
+      <img src="images/marquee/sp-stanford.svg" loading="lazy" data-logo="stanford" alt="Stanford University" class="sp-marquee-logo">
+      <img src="images/marquee/sp-zendesk.svg" loading="lazy" data-logo="zendesk" alt="Zendesk" class="sp-marquee-logo">
+      <img src="images/marquee/sp-ford.svg" loading="lazy" data-logo="ford" alt="Ford" class="sp-marquee-logo">
+      <img src="images/marquee/sp-netflix.svg" loading="lazy" data-logo="netflix" alt="Netflix" class="sp-marquee-logo">
+      <img src="images/marquee/sp-snowflake.svg" loading="lazy" data-logo="snowflake" alt="Snowflake" class="sp-marquee-logo">
+      <img src="images/marquee/sp-yale.svg" loading="lazy" data-logo="yale" alt="Yale" class="sp-marquee-logo">
+      <img src="images/marquee/sp-mit.svg" loading="lazy" data-logo="mit" alt="MIT" class="sp-marquee-logo">
+      <img src="images/marquee/sp-nvidia.svg" loading="lazy" data-logo="nvidia" alt="NVIDIA" class="sp-marquee-logo">
+      <img src="images/marquee/sp-nyu.svg" loading="lazy" data-logo="nyu" alt="NYU" class="sp-marquee-logo">
+      <img src="images/marquee/sp-vogue.svg" loading="lazy" data-logo="vogue" alt="Vogue" class="sp-marquee-logo">
+      <img src="images/marquee/sp-siemens.svg" loading="lazy" data-logo="siemens" alt="Siemens" class="sp-marquee-logo">
+      <img src="images/marquee/sp-rippling.svg" loading="lazy" data-logo="rippling" alt="Rippling" class="sp-marquee-logo">
+      <img src="images/marquee/sp-condenast.svg" loading="lazy" data-logo="condenast" alt="Condé Nast" class="sp-marquee-logo">
+      <img src="images/marquee/sp-dhl.svg" loading="lazy" data-logo="dhl" alt="DHL" class="sp-marquee-logo">
+    </div>
+  </div>
+</div>
+
+<!-- ============================ TESTIMONIALS ============================ -->
+<section class="section_testi">
+  <h2 class="testi-title">From people who use<br>Littlebird every day</h2>
+  <div class="testi_masonry">
+    <a rel="noopener noreferrer" target="_blank" href="https://x.com/lennysan" class="testi_card w-inline-block">
+      <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" class="testi_qsvg"><path opacity="0.2" fill-rule="evenodd" clip-rule="evenodd" d="M22 5C22.7956 5 23.5587 5.31607 24.1213 5.87868C24.6839 6.44129 25 7.20435 25 8V12.5C25 13.2956 24.6839 14.0587 24.1213 14.6213C23.5587 15.1839 22.7956 15.5 22 15.5H17.5C17.5 16.6935 17.9741 17.8381 18.818 18.682C19.6619 19.5259 20.8065 20 22 20H23.5C23.8978 20 24.2794 20.158 24.5607 20.4393C24.842 20.7206 25 21.1022 25 21.5C25 21.8978 24.842 22.2794 24.5607 22.5607C24.2794 22.842 23.8978 23 23.5 23H22C20.0109 23 18.1032 22.2098 16.6967 20.8033C15.2902 19.3968 14.5 17.4891 14.5 15.5V8C14.5 7.20435 14.8161 6.44129 15.3787 5.87868C15.9413 5.31607 16.7043 5 17.5 5H22ZM8.5 5C9.29565 5 10.0587 5.31607 10.6213 5.87868C11.1839 6.44129 11.5 7.20435 11.5 8V12.5C11.5 13.2956 11.1839 14.0587 10.6213 14.6213C10.0587 15.1839 9.29565 15.5 8.5 15.5H4C4 16.6935 4.4741 17.8381 5.31802 18.682C6.16193 19.5259 7.30652 20 8.5 20H10C10.3978 20 10.7794 20.158 11.0607 20.4393C11.342 20.7206 11.5 21.1022 11.5 21.5C11.5 21.8978 11.342 22.2794 11.0607 22.5607C10.7794 22.842 10.3978 23 10 23H8.5C6.51088 23 4.60322 22.2098 3.1967 20.8033C1.79017 19.3968 0.999998 17.4891 0.999998 15.5V8C0.999998 7.20435 1.31607 6.44129 1.87868 5.87868C2.44129 5.31607 3.20435 5 4 5H8.5Z" fill="#1B1C14"></path></svg>
+      <p class="testi_quote">This is the future.</p>
+      <div class="testi_author">
+        <div class="testi_author_left">
+          <img src="images/testi-lenny-rachitsky.jpg" loading="lazy" alt="Lenny Rachitsky" class="testi_avatar">
+          <div class="testi_meta"><p class="testi_name">Lenny Rachitsky</p><p class="testi_handle">@lennysan</p></div>
+        </div>
+        <img src="images/footer-icon-x.svg" loading="lazy" alt="X" class="testi_x">
+      </div>
+    </a>
+    <a rel="noopener noreferrer" target="_blank" href="https://x.com/scottbelsky" class="testi_card w-inline-block">
+      <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" class="testi_qsvg"><path opacity="0.2" fill-rule="evenodd" clip-rule="evenodd" d="M22 5C22.7956 5 23.5587 5.31607 24.1213 5.87868C24.6839 6.44129 25 7.20435 25 8V12.5C25 13.2956 24.6839 14.0587 24.1213 14.6213C23.5587 15.1839 22.7956 15.5 22 15.5H17.5C17.5 16.6935 17.9741 17.8381 18.818 18.682C19.6619 19.5259 20.8065 20 22 20H23.5C23.8978 20 24.2794 20.158 24.5607 20.4393C24.842 20.7206 25 21.1022 25 21.5C25 21.8978 24.842 22.2794 24.5607 22.5607C24.2794 22.842 23.8978 23 23.5 23H22C20.0109 23 18.1032 22.2098 16.6967 20.8033C15.2902 19.3968 14.5 17.4891 14.5 15.5V8C14.5 7.20435 14.8161 6.44129 15.3787 5.87868C15.9413 5.31607 16.7043 5 17.5 5H22ZM8.5 5C9.29565 5 10.0587 5.31607 10.6213 5.87868C11.1839 6.44129 11.5 7.20435 11.5 8V12.5C11.5 13.2956 11.1839 14.0587 10.6213 14.6213C10.0587 15.1839 9.29565 15.5 8.5 15.5H4C4 16.6935 4.4741 17.8381 5.31802 18.682C6.16193 19.5259 7.30652 20 8.5 20H10C10.3978 20 10.7794 20.158 11.0607 20.4393C11.342 20.7206 11.5 21.1022 11.5 21.5C11.5 21.8978 11.342 22.2794 11.0607 22.5607C10.7794 22.842 10.3978 23 10 23H8.5C6.51088 23 4.60322 22.2098 3.1967 20.8033C1.79017 19.3968 0.999998 17.4891 0.999998 15.5V8C0.999998 7.20435 1.31607 6.44129 1.87868 5.87868C2.44129 5.31607 3.20435 5 4 5H8.5Z" fill="#1B1C14"></path></svg>
+      <p class="testi_quote">&ldquo;screenreading&rdquo; to optimize human performance will be a thing. AI that remembers everything you've been working on &ndash; mtgs, messages, docs, browsing - and helps you stay focused, prioritize, recall, and move projects forward... tech that focuses you.</p>
+      <div class="testi_author">
+        <div class="testi_author_left">
+          <img src="images/testi-scott-belsky.avif" loading="lazy" alt="Scott Belsky" class="testi_avatar">
+          <div class="testi_meta"><p class="testi_name">Scott Belsky</p><p class="testi_handle">@scottbelsky</p></div>
+        </div>
+        <img src="images/footer-icon-x.svg" loading="lazy" alt="X" class="testi_x">
+      </div>
+    </a>
+    <a rel="noopener noreferrer" target="_blank" href="https://x.com/gokulr" class="testi_card w-inline-block">
+      <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" class="testi_qsvg"><path opacity="0.2" fill-rule="evenodd" clip-rule="evenodd" d="M22 5C22.7956 5 23.5587 5.31607 24.1213 5.87868C24.6839 6.44129 25 7.20435 25 8V12.5C25 13.2956 24.6839 14.0587 24.1213 14.6213C23.5587 15.1839 22.7956 15.5 22 15.5H17.5C17.5 16.6935 17.9741 17.8381 18.818 18.682C19.6619 19.5259 20.8065 20 22 20H23.5C23.8978 20 24.2794 20.158 24.5607 20.4393C24.842 20.7206 25 21.1022 25 21.5C25 21.8978 24.842 22.2794 24.5607 22.5607C24.2794 22.842 23.8978 23 23.5 23H22C20.0109 23 18.1032 22.2098 16.6967 20.8033C15.2902 19.3968 14.5 17.4891 14.5 15.5V8C14.5 7.20435 14.8161 6.44129 15.3787 5.87868C15.9413 5.31607 16.7043 5 17.5 5H22ZM8.5 5C9.29565 5 10.0587 5.31607 10.6213 5.87868C11.1839 6.44129 11.5 7.20435 11.5 8V12.5C11.5 13.2956 11.1839 14.0587 10.6213 14.6213C10.0587 15.1839 9.29565 15.5 8.5 15.5H4C4 16.6935 4.4741 17.8381 5.31802 18.682C6.16193 19.5259 7.30652 20 8.5 20H10C10.3978 20 10.7794 20.158 11.0607 20.4393C11.342 20.7206 11.5 21.1022 11.5 21.5C11.5 21.8978 11.342 22.2794 11.0607 22.5607C10.7794 22.842 10.3978 23 10 23H8.5C6.51088 23 4.60322 22.2098 3.1967 20.8033C1.79017 19.3968 0.999998 17.4891 0.999998 15.5V8C0.999998 7.20435 1.31607 6.44129 1.87868 5.87868C2.44129 5.31607 3.20435 5 4 5H8.5Z" fill="#1B1C14"></path></svg>
+      <p class="testi_quote">I've spent my career building products that reduce friction for users. @LittlebirdAI does something I've rarely seen. It eliminates an entire category of friction: the overhead of remembering, retrieving, and re-explaining your own work. I use it every day.</p>
+      <div class="testi_author">
+        <div class="testi_author_left">
+          <img src="images/testi-gokul-rajaram.jpg" loading="lazy" alt="Gokul Rajaram" class="testi_avatar">
+          <div class="testi_meta"><p class="testi_name">Gokul Rajaram</p><p class="testi_handle">@gokulr</p></div>
+        </div>
+        <img src="images/footer-icon-x.svg" loading="lazy" alt="X" class="testi_x">
+      </div>
+    </a>
+    <a rel="noopener noreferrer" target="_blank" href="https://x.com/jspeiser" class="testi_card w-inline-block">
+      <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" class="testi_qsvg"><path opacity="0.2" fill-rule="evenodd" clip-rule="evenodd" d="M22 5C22.7956 5 23.5587 5.31607 24.1213 5.87868C24.6839 6.44129 25 7.20435 25 8V12.5C25 13.2956 24.6839 14.0587 24.1213 14.6213C23.5587 15.1839 22.7956 15.5 22 15.5H17.5C17.5 16.6935 17.9741 17.8381 18.818 18.682C19.6619 19.5259 20.8065 20 22 20H23.5C23.8978 20 24.2794 20.158 24.5607 20.4393C24.842 20.7206 25 21.1022 25 21.5C25 21.8978 24.842 22.2794 24.5607 22.5607C24.2794 22.842 23.8978 23 23.5 23H22C20.0109 23 18.1032 22.2098 16.6967 20.8033C15.2902 19.3968 14.5 17.4891 14.5 15.5V8C14.5 7.20435 14.8161 6.44129 15.3787 5.87868C15.9413 5.31607 16.7043 5 17.5 5H22ZM8.5 5C9.29565 5 10.0587 5.31607 10.6213 5.87868C11.1839 6.44129 11.5 7.20435 11.5 8V12.5C11.5 13.2956 11.1839 14.0587 10.6213 14.6213C10.0587 15.1839 9.29565 15.5 8.5 15.5H4C4 16.6935 4.4741 17.8381 5.31802 18.682C6.16193 19.5259 7.30652 20 8.5 20H10C10.3978 20 10.7794 20.158 11.0607 20.4393C11.342 20.7206 11.5 21.1022 11.5 21.5C11.5 21.8978 11.342 22.2794 11.0607 22.5607C10.7794 22.842 10.3978 23 10 23H8.5C6.51088 23 4.60322 22.2098 3.1967 20.8033C1.79017 19.3968 0.999998 17.4891 0.999998 15.5V8C0.999998 7.20435 1.31607 6.44129 1.87868 5.87868C2.44129 5.31607 3.20435 5 4 5H8.5Z" fill="#1B1C14"></path></svg>
+      <p class="testi_quote">I've been quietly using @LittlebirdAI for months and it's become my secret weapon. It watches what I'm working on, learns how I operate, and shows up ready before I even ask. It's what I call my 2nd brain &mdash; a place that captures everything I do at work, not just what I feed it&hellip;</p>
+      <div class="testi_author">
+        <div class="testi_author_left">
+          <img src="images/testi-joe-speiser.jpg" loading="lazy" alt="Joe Speiser" class="testi_avatar">
+          <div class="testi_meta"><p class="testi_name">Joe Speiser</p><p class="testi_handle">@jspeiser</p></div>
+        </div>
+        <img src="images/footer-icon-x.svg" loading="lazy" alt="X" class="testi_x">
+      </div>
+    </a>
+    <a rel="noopener noreferrer" target="_blank" href="https://x.com/swyx" class="testi_card w-inline-block">
+      <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" class="testi_qsvg"><path opacity="0.2" fill-rule="evenodd" clip-rule="evenodd" d="M22 5C22.7956 5 23.5587 5.31607 24.1213 5.87868C24.6839 6.44129 25 7.20435 25 8V12.5C25 13.2956 24.6839 14.0587 24.1213 14.6213C23.5587 15.1839 22.7956 15.5 22 15.5H17.5C17.5 16.6935 17.9741 17.8381 18.818 18.682C19.6619 19.5259 20.8065 20 22 20H23.5C23.8978 20 24.2794 20.158 24.5607 20.4393C24.842 20.7206 25 21.1022 25 21.5C25 21.8978 24.842 22.2794 24.5607 22.5607C24.2794 22.842 23.8978 23 23.5 23H22C20.0109 23 18.1032 22.2098 16.6967 20.8033C15.2902 19.3968 14.5 17.4891 14.5 15.5V8C14.5 7.20435 14.8161 6.44129 15.3787 5.87868C15.9413 5.31607 16.7043 5 17.5 5H22ZM8.5 5C9.29565 5 10.0587 5.31607 10.6213 5.87868C11.1839 6.44129 11.5 7.20435 11.5 8V12.5C11.5 13.2956 11.1839 14.0587 10.6213 14.6213C10.0587 15.1839 9.29565 15.5 8.5 15.5H4C4 16.6935 4.4741 17.8381 5.31802 18.682C6.16193 19.5259 7.30652 20 8.5 20H10C10.3978 20 10.7794 20.158 11.0607 20.4393C11.342 20.7206 11.5 21.1022 11.5 21.5C11.5 21.8978 11.342 22.2794 11.0607 22.5607C10.7794 22.842 10.3978 23 10 23H8.5C6.51088 23 4.60322 22.2098 3.1967 20.8033C1.79017 19.3968 0.999998 17.4891 0.999998 15.5V8C0.999998 7.20435 1.31607 6.44129 1.87868 5.87868C2.44129 5.31607 3.20435 5 4 5H8.5Z" fill="#1B1C14"></path></svg>
+      <p class="testi_quote">Now that @dsiroker has wound down Rewind, Littlebird is the presumptive successor. Context is still king, and Alap and much of the old Sentieo team are getting back together to solve it.</p>
+      <div class="testi_author">
+        <div class="testi_author_left">
+          <img src="images/testi-swyx.jpg" loading="lazy" alt="swyx" class="testi_avatar">
+          <div class="testi_meta"><p class="testi_name">swyx</p><p class="testi_handle">@swyx</p></div>
+        </div>
+        <img src="images/footer-icon-x.svg" loading="lazy" alt="X" class="testi_x">
+      </div>
+    </a>
+    <a rel="noopener noreferrer" target="_blank" href="https://x.com/rheddleston" class="testi_card w-inline-block">
+      <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" class="testi_qsvg"><path opacity="0.2" fill-rule="evenodd" clip-rule="evenodd" d="M22 5C22.7956 5 23.5587 5.31607 24.1213 5.87868C24.6839 6.44129 25 7.20435 25 8V12.5C25 13.2956 24.6839 14.0587 24.1213 14.6213C23.5587 15.1839 22.7956 15.5 22 15.5H17.5C17.5 16.6935 17.9741 17.8381 18.818 18.682C19.6619 19.5259 20.8065 20 22 20H23.5C23.8978 20 24.2794 20.158 24.5607 20.4393C24.842 20.7206 25 21.1022 25 21.5C25 21.8978 24.842 22.2794 24.5607 22.5607C24.2794 22.842 23.8978 23 23.5 23H22C20.0109 23 18.1032 22.2098 16.6967 20.8033C15.2902 19.3968 14.5 17.4891 14.5 15.5V8C14.5 7.20435 14.8161 6.44129 15.3787 5.87868C15.9413 5.31607 16.7043 5 17.5 5H22ZM8.5 5C9.29565 5 10.0587 5.31607 10.6213 5.87868C11.1839 6.44129 11.5 7.20435 11.5 8V12.5C11.5 13.2956 11.1839 14.0587 10.6213 14.6213C10.0587 15.1839 9.29565 15.5 8.5 15.5H4C4 16.6935 4.4741 17.8381 5.31802 18.682C6.16193 19.5259 7.30652 20 8.5 20H10C10.3978 20 10.7794 20.158 11.0607 20.4393C11.342 20.7206 11.5 21.1022 11.5 21.5C11.5 21.8978 11.342 22.2794 11.0607 22.5607C10.7794 22.842 10.3978 23 10 23H8.5C6.51088 23 4.60322 22.2098 3.1967 20.8033C1.79017 19.3968 0.999998 17.4891 0.999998 15.5V8C0.999998 7.20435 1.31607 6.44129 1.87868 5.87868C2.44129 5.31607 3.20435 5 4 5H8.5Z" fill="#1B1C14"></path></svg>
+      <p class="testi_quote">Littlebird wrote out our whole marketing site for me since it's able to see all the emails and notes I take about Distill. It's saved me a crazy amount of time!</p>
+      <div class="testi_author">
+        <div class="testi_author_left">
+          <img src="images/testi-russ-heddleston.jpeg" loading="lazy" alt="Russ Heddleston" class="testi_avatar">
+          <div class="testi_meta"><p class="testi_name">Russ Heddleston</p><p class="testi_handle">3x founder; now helping other founders automate personal sales outreach</p></div>
+        </div>
+        <img src="images/footer-icon-x.svg" loading="lazy" alt="X" class="testi_x">
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ============================ PRIVACY ============================ -->
+<section class="section_priv">
+  <div class="utility-text-align-center">
+    <h2 class="privacy-title">Your AI assistant with enterprise-grade security</h2>
+    <p class="privacy_subhead">You decide what we see, what we keep, and what we forget.</p>
+  </div>
+  <div class="w-layout-grid privacy-grid">
+    <div class="privacy_card_home">
+      <div class="privacy_img"></div>
+      <div class="privacy_textgroup_2">
+        <h6 class="privacy_subh">100% in your control</h6>
+        <p class="privacy_desc">You control what Littlebird can see. Delete your data or your account whenever you want.</p>
+      </div>
+    </div>
+    <div class="privacy_card_home">
+      <div class="privacy_img img_2"></div>
+      <div class="privacy_textgroup_2">
+        <h6 class="privacy_subh">Enterprise-grade encryption</h6>
+        <p class="privacy_desc">Our infrastructure is encrypted using industry-leading security practices.</p>
+      </div>
+    </div>
+    <div class="privacy_card_home">
+      <div class="privacy_img img_3"></div>
+      <div class="privacy_textgroup_2">
+        <h6 class="privacy_subh">Your data is always yours</h6>
+        <p class="privacy_desc">We don&rsquo;t sell your data or use it to train our models.</p>
+      </div>
+    </div>
+  </div>
+  <a href="/privacy" class="privacy_btn w-inline-block">
+    <p class="meet_btn_text">Learn more</p>
+    <img src="images/icon-arrow-right.svg" loading="lazy" alt="arrow right" class="meet_btn_arrow_icon">
+  </a>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="faq_section">
+  <div class="faq_v_wrap">
+    <h2 class="features-title faq_head_v">Frequently asked questions</h2>
+    <div class="faq__list">
+      <div class="faq-row">
+        <div class="faq__left">
+          <div class="faq__title">How does Littlebird understand my work?</div>
+          <p class="faq-answer">Littlebird learns by seeing what you see. It pays attention to the active window on your screen, like the document you're writing or the website you're browsing. During meetings, it listens along to take notes for you. It can also connect to the tools you already use, like your email and calendar, to pull in context and take actions on your behalf.</p>
+        </div>
+        <img src="images/icon-plus.svg" loading="lazy" alt="" class="faq__plus">
+      </div>
+      <div class="faq-row">
+        <div class="faq__left">
+          <div class="faq__title">Do I need to connect all my apps for Littlebird to work?</div>
+          <p class="faq-answer">No, and that's what makes Littlebird so powerful. It works automatically by seeing what's on your screen, giving you a unified memory across all your apps without any setup. We also offer hundreds of integrations with your favorite apps so you can give Littlebird deeper access to the tools you use most. For example, if you want Littlebird to help schedule meetings, you can integrate with Google Calendar.</p>
+        </div>
+        <img src="images/icon-plus.svg" loading="lazy" alt="" class="faq__plus">
+      </div>
+      <div class="faq-row">
+        <div class="faq__left">
+          <div class="faq__title">What integrations does Littlebird support?</div>
+          <p class="faq-answer">Littlebird supports hundreds of integrations across a wide range of categories, including:<br><br><span><strong>Project management: </strong>Notion, Linear, ClickUp, monday.com, Atlassian Rovo (Jira and Confluence)<br><br><strong>Design and collaboration:</strong> Canva, Miro, Lucid<br><br><strong>Developer tools: </strong>Axiom, Cloudflare Developer Platform, PlanetScale, Honeycomb<br><br><strong>CRM and sales:</strong> Intercom, Outreach, Close, Clarify, Day AI<br><br><strong>Finance:</strong> Mercury, Ramp, PayPal, Stripe<br><br><strong>Meetings:</strong> Calendly, Fireflies, Granola, Krisp, Circleback<br><br><strong>Marketing:</strong> Klaviyo, MailerLite, Bitly, Ahrefs, AirOps<br><br><strong>Analytics:</strong> Mixpanel, Omni Analytics, PostHog<br><br><strong>Knowledge and docs: </strong>Guru, Mem, Craft, Egnyte, Google Drive<br><br><strong>Email and calendar: </strong>Gmail, Google Calendar, Outlook, Apple Calendar, Apple Reminders</span><br><br>Integrations are optional. Littlebird works with every app automatically by observing your screen. But connecting your tools gives Littlebird even deeper access. You can browse the full list in <strong>Settings</strong> &gt; <strong>Integrations</strong>.</p>
+        </div>
+        <img src="images/icon-plus.svg" loading="lazy" alt="" class="faq__plus">
+      </div>
+      <div class="faq-row">
+        <div class="faq__left">
+          <div class="faq__title">Why should I use Littlebird instead of a general AI&nbsp;assistant or chatbot?</div>
+          <p class="faq-answer">General AI assistants have no context about your work. You have to catch them up by copying and pasting information, which is slow and raises privacy concerns. Littlebird already understands the work behind your requests&mdash;your documents, conversations, and projects&mdash;so it gives you more relevant answers and stronger starting points. This makes Littlebird faster, more personal, and far more useful for day-to-day work.</p>
+        </div>
+        <img src="images/icon-plus.svg" loading="lazy" alt="" class="faq__plus">
+      </div>
+      <div class="faq-row">
+        <div class="faq__left">
+          <div class="faq__title">Is my data secure with Littlebird?</div>
+          <p class="faq-answer">Security is foundational to how Littlebird works. Everything you see is encrypted in transit and at rest using industry-leading practices. You decide what Littlebird can access, what it keeps, and what it forgets. You can review and delete your data or your account at any time.</p>
+        </div>
+        <img src="images/icon-plus.svg" loading="lazy" alt="" class="faq__plus">
+      </div>
+      <div class="faq-row">
+        <div class="faq__left">
+          <div class="faq__title">Where is my data stored?</div>
+          <p class="faq-answer">Your data is stored securely in the cloud on encrypted infrastructure. Access is limited to what's needed to operate the service, and you remain in control of what Littlebird can see and remember.</p>
+        </div>
+        <img src="images/icon-plus.svg" loading="lazy" alt="" class="faq__plus">
+      </div>
+      <div class="faq-row">
+        <div class="faq__left">
+          <div class="faq__title">Do you use my data to train AI models or sell it to third parties?</div>
+          <p class="faq-answer">No. We never sell your data, and we don't use it to train our models. Your information is yours &mdash; Littlebird simply helps you use it better.</p>
+        </div>
+        <img src="images/icon-plus.svg" loading="lazy" alt="" class="faq__plus">
+      </div>
+      <div class="faq-row">
+        <div class="faq__left">
+          <div class="faq__title">What platforms or devices is Littlebird available on?</div>
+          <p class="faq-answer">Littlebird is available for Windows, macOS, iOS, and Android. Download the desktop app for the full experience, and take Littlebird with you everywhere with the mobile apps.</p>
+        </div>
+        <img src="images/icon-plus.svg" loading="lazy" alt="" class="faq__plus">
+      </div>
+      <div class="faq-row">
+        <div class="faq__left">
+          <div class="faq__title">Do you offer a student discount?</div>
+          <p class="faq-answer">Yes! We offer a discount for students. Reach out to our support team with proof of enrollment and we'll get you set up.</p>
+        </div>
+        <img src="images/icon-plus.svg" loading="lazy" alt="" class="faq__plus">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CTA ============================ -->
+<section class="section_cta">
+  <div class="cta_card">
+    <img src="images/cta-background.webp" loading="lazy" alt="Hummingbird flying near an open window amid green trees and purple flowers under a bright blue sky." class="cta_bg">
+    <div class="cta_content">
+      <div class="cta_textgroup">
+        <h2 class="cta_heading">Save hours of work for free</h2>
+        <p class="cta_subhead">You're 60 seconds away from having a personal assistant. Upgrade for max intelligence and infinite features.</p>
+      </div>
+      <div class="cta_actions">
+        <div class="cta_group">
+          <a data-download-windows="true" href="#" class="cta_btn cta-windows w-inline-block" style="display:flex;">
+            <img src="images/icon-windows.svg" loading="lazy" alt="Windows" class="cta_btn_icon"><p class="cta_btn_text">Download for Free</p>
+          </a>
+          <a href="#" class="cta_btn cta-ios w-inline-block" style="display:none;">
+            <img src="images/icon-send.svg" loading="lazy" alt="Send" class="cta_btn_icon"><p class="cta_btn_text">Send download link</p>
+          </a>
+          <a href="#" class="cta_btn cta-android w-inline-block" style="display:none;">
+            <img src="images/icon-send.svg" loading="lazy" alt="Send" class="cta_btn_icon"><p class="cta_btn_text">Send download link</p>
+          </a>
+          <a href="/download" class="cta_btn cta-others w-inline-block" style="display:none;">
+            <img src="images/icon-send.svg" loading="lazy" alt="Send" class="cta_btn_icon"><p class="cta_btn_text">Send download link</p>
+          </a>
+          <a data-download="true" href="#" class="cta_btn cta-mac-as w-inline-block" style="display:none;">
+            <img src="images/icon-apple.svg" loading="lazy" alt="Apple" class="cta_btn_icon"><p data-os-label="true" class="cta_btn_text">Download for Free</p>
+          </a>
+        </div>
+        <p class="cta_fineprint">Free to start &bull; Available for Windows, iOS, and Android</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FOOTER ============================ -->
+<section class="section_footer">
+  <img src="images/footer-bg-2.webp" loading="lazy" alt="" class="footer_vid">
+  <div class="footer_container">
+    <div class="footer_nav">
+      <div class="footer_brand">
+        <img src="images/logo.svg" loading="lazy" alt="Littlebird" class="footer_logo">
+        <div class="footer_socials">
+          <a rel="noopener noreferrer" target="_blank" href="https://x.com/littlebirdai" class="footer_social_link w-inline-block"><img src="images/footer-icon-x.svg" loading="lazy" alt="X" class="footer_social_icon"></a>
+          <a rel="noopener noreferrer" target="_blank" href="https://www.instagram.com/littlebird.ai" class="footer_social_link w-inline-block"><img src="images/footer-icon-instagram.svg" loading="lazy" alt="Instagram" class="footer_social_icon"></a>
+          <a rel="noopener noreferrer" target="_blank" href="https://www.linkedin.com/company/littlebirdai/" class="footer_social_link w-inline-block"><img src="images/footer-icon-linkedin.svg" loading="lazy" alt="LinkedIn" class="footer_social_icon"></a>
+          <a rel="noopener noreferrer" target="_blank" href="https://www.youtube.com/@Littlebird-AI" class="footer_social_link w-inline-block"><img src="images/footer-icon-youtube.svg" loading="lazy" alt="YouTube" class="footer_social_icon"></a>
+          <a rel="noopener noreferrer" target="_blank" href="/discord" class="footer_social_link w-inline-block"><img src="images/footer-icon-discord.svg" loading="lazy" width="Auto" alt="Discord" class="footer_social_icon"></a>
+        </div>
+      </div>
+      <div class="footer_col">
+        <p class="footer_col_head">Product</p>
+        <div class="footer_list">
+          <a href="/pricing" class="footer_link">Pricing</a>
+          <a href="/faq" class="footer_link">FAQ</a>
+          <a href="/privacy" class="footer_link">Privacy &amp; Security</a>
+          <a href="/changelog" class="footer_link">Changelog</a>
+        </div>
+      </div>
+      <div class="footer_col">
+        <p class="footer_col_head">Features</p>
+        <div class="footer_list">
+          <a href="/features/chat" class="footer_link">Chat</a>
+          <a href="/features/meeting-notes" class="footer_link">Meeting Notes</a>
+          <a href="/features/routines" class="footer_link">Routines</a>
+          <a href="/features/hummingbird" class="footer_link">Hummingbird</a>
+          <a href="/integrations" class="footer_link">Integrations</a>
+        </div>
+      </div>
+      <div class="footer_col">
+        <p class="footer_col_head">Resources</p>
+        <div class="footer_list">
+          <a href="/support" class="footer_link">Support</a>
+          <a href="/discord" class="footer_link">Discord</a>
+          <a href="/blog" class="footer_link">Blog</a>
+          <a href="/download" class="footer_link">Downloads</a>
+        </div>
+      </div>
+      <div class="footer_col">
+        <p class="footer_col_head">Company</p>
+        <div class="footer_list">
+          <a href="/about-us" class="footer_link">About us</a>
+          <a href="https://jobs.gem.com/littlebird" class="footer_link">Careers</a>
+          <a href="https://trust.littlebird.ai" class="footer_link">Trust Center</a>
+          <a href="https://partners.dub.co/littlebird" class="footer_link">Become an affiliate</a>
+          <a href="/vulnerability-disclosure-policy" class="footer_link">Report a bug</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer_bottom">
+      <div class="footer_bottom_line is_hidden_md"></div>
+      <img src="images/footer-trust-badges.webp" loading="lazy" alt="SOC 2, HIPAA, GDPR and other compliance badges" class="footer_badges">
+      <div class="footer_bottom_line"></div>
+    </div>
+    <div class="footer_legal">
+      <p class="footer_legal_copy">Littlebird. All rights reserved. &copy; 2026</p>
+      <div class="footer_legal_links">
+        <a href="/terms-of-use" class="footer_legal_link">Terms and conditions</a>
+        <a href="/privacy-policy" class="footer_legal_link">Privacy policy</a>
+      </div>
+    </div>
+  </div>
+  <img src="images/footerbiglogo.svg" loading="lazy" alt="Littlebird" class="footer_logo_big">
+</section>
+
+<script src="js/main.js"></script>
+</body>
+</html>
