@@ -1,0 +1,1272 @@
+{
+  "url": "https://littlebird.ai/",
+  "title": "Littlebird: AI Assistant With a Memory of Your Work",
+  "capturedAt": "2026-08-01T13:55:42.271Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "stack": [
+    "jquery",
+    "tailwind"
+  ],
+  "fonts": [
+    "webflow-icons",
+    "Meraki",
+    "Soehne Kraftig",
+    "Soehne Halbfett",
+    "Sohne Buch",
+    "Sohne"
+  ],
+  "cssVariables": {
+    "--i": "10",
+    "--fo": ".7"
+  },
+  "keyframes": [
+    {
+      "name": "spin",
+      "text": "@keyframes spin{0%{transform:rotate(0)}to{transform:rotate(360deg)}}"
+    }
+  ],
+  "runningAnimations": [
+    {
+      "playState": "running",
+      "currentTime": 9424.838,
+      "duration": 55000,
+      "iterations": null,
+      "delay": 0,
+      "target": "div.sp-marquee-track"
+    }
+  ],
+  "colorsTop40": [
+    {
+      "color": "rgb(0, 0, 0)",
+      "count": 1965
+    },
+    {
+      "color": "none",
+      "count": 807
+    },
+    {
+      "color": "rgb(27, 28, 20)",
+      "count": 370
+    },
+    {
+      "color": "rgba(0, 0, 0, 0.8)",
+      "count": 147
+    },
+    {
+      "color": "rgb(0, 0, 238)",
+      "count": 146
+    },
+    {
+      "color": "rgb(255, 255, 255)",
+      "count": 134
+    },
+    {
+      "color": "rgba(27, 28, 20, 0.65)",
+      "count": 56
+    },
+    {
+      "color": "rgba(27, 28, 20, 0.55)",
+      "count": 48
+    },
+    {
+      "color": "rgba(27, 28, 20, 0.6)",
+      "count": 39
+    },
+    {
+      "color": "rgb(33, 33, 33)",
+      "count": 38
+    },
+    {
+      "color": "rgba(0, 0, 0, 0.1)",
+      "count": 34
+    },
+    {
+      "color": "rgba(0, 0, 0, 0.9)",
+      "count": 27
+    },
+    {
+      "color": "rgb(27, 28, 21)",
+      "count": 25
+    },
+    {
+      "color": "rgb(255, 253, 245)",
+      "count": 21
+    },
+    {
+      "color": "rgba(27, 28, 20, 0.8)",
+      "count": 21
+    },
+    {
+      "color": "rgba(27, 28, 20, 0.5)",
+      "count": 21
+    },
+    {
+      "color": "rgba(27, 28, 20, 0.61)",
+      "count": 18
+    },
+    {
+      "color": "rgb(255, 250, 235)",
+      "count": 15
+    },
+    {
+      "color": "rgba(27, 28, 20, 0.45)",
+      "count": 15
+    },
+    {
+      "color": "rgba(27, 28, 20, 0.1)",
+      "count": 12
+    },
+    {
+      "color": "rgba(27, 28, 20, 0.4)",
+      "count": 12
+    },
+    {
+      "color": "rgb(0, 117, 78)",
+      "count": 8
+    },
+    {
+      "color": "rgb(78, 75, 102)",
+      "count": 6
+    },
+    {
+      "color": "rgb(86, 86, 78)",
+      "count": 6
+    },
+    {
+      "color": "rgba(27, 28, 20, 0.35)",
+      "count": 6
+    },
+    {
+      "color": "rgba(0, 0, 0, 0.5)",
+      "count": 6
+    },
+    {
+      "color": "rgb(251, 248, 239)",
+      "count": 5
+    },
+    {
+      "color": "rgb(246, 237, 215)",
+      "count": 5
+    },
+    {
+      "color": "rgba(27, 28, 20, 0.15)",
+      "count": 4
+    },
+    {
+      "color": "rgba(0, 0, 0, 0.7)",
+      "count": 4
+    },
+    {
+      "color": "rgba(0, 0, 0, 0.12)",
+      "count": 4
+    },
+    {
+      "color": "rgb(20, 20, 42)",
+      "count": 3
+    },
+    {
+      "color": "rgb(249, 244, 231)",
+      "count": 3
+    },
+    {
+      "color": "rgba(255, 255, 255, 0.92)",
+      "count": 3
+    },
+    {
+      "color": "rgb(85, 85, 78)",
+      "count": 3
+    },
+    {
+      "color": "rgba(255, 255, 255, 0)",
+      "count": 2
+    },
+    {
+      "color": "rgb(148, 148, 148)",
+      "count": 2
+    },
+    {
+      "color": "rgba(255, 255, 255, 0.1)",
+      "count": 2
+    },
+    {
+      "color": "rgba(187, 187, 187, 0.15)",
+      "count": 2
+    },
+    {
+      "color": "rgba(56, 152, 236, 0)",
+      "count": 2
+    }
+  ],
+  "lottie": [],
+  "resources": [
+    {
+      "url": "https://ad.doubleclick.net/ccm/s/collect?auid=1077765236.1785592530&gtm=45Fe67u0h2v9220418660za200zd9220418660xea&fmt=8",
+      "status": 204,
+      "type": "",
+      "size": 0
+    },
+    {
+      "url": "https://alb.reddit.com/rp.gif?ts=1785592530262&id=a2_h0yq1uxe7xh1&event=PageVisit&m.value=&m.transactionId=&m.customEventName=&m.products=&m.conversionId=38093e4f8f020d135730bd2c03fa46d83f31e6bbd520f5b7de87a95be9bd2f2d&uuid=0da5bb0e-fa0a-4733-a364-03ae6c55f3cd&aaid=&external_id=&idfa=&integration=gtm&partner=&partner_version=1.0.4&opt_out=0&sh=1440&sw=900&v=rdt_b6dc0919&dpm=&dpcc=&dprc=&esurl=https%3A%2F%2Flittlebird.ai%2F&db=tsc-0.isc-0.pp-0.fetch-1.mo-1.iframe-0.ww-0.qsa-1.srv_cfg-1.src_pid-1",
+      "status": 200,
+      "type": "image/gif",
+      "size": 42
+    },
+    {
+      "url": "https://analytics.google.com/g/s/collect?dma=0&npa=0&gcs=G111&gcd=13r3r3r2r5l1&gtm=45b91e67t0v9220074250z89220418660z99229554232za200zb9220418660zd9220418660&tag_exp=115938465~115938468~118032361~118032361~118897920~118897930~119896802~120222309&_is_sw=f15s0t1&_tu=BA&gap.sstd=2&_gsid=VKL74VFV8W-_3xvduYeH29yVd3b5ppCw",
+      "status": 204,
+      "type": "text/plain",
+      "size": 0
+    },
+    {
+      "url": "https://analytics.google.com/g/s/collect?dma=0&npa=0&gcs=G111&gcd=13r3r3r2r5l1&gtm=45b91e67t0v9220074250z89220418660z99229554232za200zb9220418660zd9220418660&tag_exp=115938465~115938468~118032361~118032361~118897920~118897930~119896802~120222309&_is_sw=f15s0t21&_tu=BA&gap.sstd=2&_gsid=VKL74VFV8WE0_9pM31EStIiTe04YiAKA",
+      "status": 204,
+      "type": "text/plain",
+      "size": 0
+    },
+    {
+      "url": "https://analytics.littlebird.ai/_/service_worker/67r0/sw_iframe.html?origin=https%3A%2F%2Flittlebird.ai&1p=1",
+      "status": 200,
+      "type": "text/html",
+      "size": 0
+    },
+    {
+      "url": "https://analytics.littlebird.ai/g/collect?v=2&tid=G-PTW8YKT8NV&gtm=45he67u0h2v9234839625z89220418660za20gzb9220418660zd9220418660&_p=1785592528493&gcs=G111&gcd=13r3r3r2r5l1&npa=0&dma_cps=a&dma=1&ecid=474024002&_fplc=0&are=1&cid=1373504742.1785592530&frm=0&ngs=1&pscdl=noapi&rcb=19&sr=1440x900&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.187%7CGoogle%2520Chrome%3B150.0.7871.187&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=en-us&ur=&sst.rnd=441482564.1785592530&sst.tft=1785592528493&sst.lpc=267399443&sst.navt=n&sst.ude=0&sst.sw_exp=1&_s=1&tag_exp=115938465~115938468~118897920~118897930~119896802~120222309&sid=1785592530&sct=1&seg=0&dl=https%3A%2F%2Flittlebird.ai%2F&dt=Littlebird%3A%20AI%20Assistant%20With%20a%20Memory%20of%20Your%20Work&_tu=BA&en=page_view&_fv=1&_ss=1&gap.sstd=2&gap.gtb=2&tfd=2119&richsstsse",
+      "status": 200,
+      "type": "text/plain",
+      "size": 0
+    },
+    {
+      "url": "https://analytics.littlebird.ai/g/collect?v=2&tid=G-VKL74VFV8W&gtm=45be67t1v9220074250z89220418660za200zb9220418660zd9220418660&_p=1785592528493&gcs=G111&gcd=13r3r3r2r5l1&npa=0&dma=0&ecid=1529938484&_eu=AAAAAGA&_fplc=0&are=1&cid=1373504742.1785592530&ec_mode=c&frm=0&pscdl=noapi&rcb=19&sr=1440x900&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.187%7CGoogle%2520Chrome%3B150.0.7871.187&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=en-us&ur=IN-TN&sst.rnd=441482564.1785592530&sst.etld=google.co.in&sst.tft=1785592528493&sst.lpc=267399443&sst.navt=n&sst.ude=1&sst.sw_exp=1&gaf=2&_s=1&tag_exp=115938465~115938468~118897920~118897930~119896802~120222309&sid=1785592530&sct=1&seg=0&dl=https%3A%2F%2Flittlebird.ai%2F&dt=Littlebird%3A%20AI%20Assistant%20With%20a%20Memory%20of%20Your%20Work&_tu=BA&en=page_view&_fv=1&_nsi=1&_ss=1&gap.sstd=2&ep.user_data._tag_mode=MANUAL&ep.user_data._tag_metadata.email.mode=m&tfd=1890&richsstsse",
+      "status": 200,
+      "type": "text/plain",
+      "size": 0
+    },
+    {
+      "url": "https://analytics.littlebird.ai/g/collect?v=2&tid=G-VKL74VFV8W&gtm=45be67t1v9220074250z89220418660za200zb9220418660zd9220418660&_p=1785592528493&gcs=G111&gcd=13r3r3r2r5l1&npa=0&dma=0&gdid=dY2Q2ZW&ecid=1529938484&_eu=AAAAAGQ&_fplc=0&are=1&cid=1373504742.1785592530&ec_mode=c&frm=0&pscdl=noapi&rcb=19&sr=1440x900&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.187%7CGoogle%2520Chrome%3B150.0.7871.187&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=en-us&ur=IN-TN&sst.rnd=441482564.1785592530&sst.etld=google.co.in&sst.tft=1785592528493&sst.lpc=267399443&sst.navt=n&sst.ude=1&sst.sw_exp=1&gaf=2&_s=2&tag_exp=115938465~115938468~118897920~118897930~119896802~120222309&sid=1785592530&sct=1&seg=0&dl=https%3A%2F%2Flittlebird.ai%2F&dt=Littlebird%3A%20AI%20Assistant%20With%20a%20Memory%20of%20Your%20Work&_tu=BA&en=gtm.dom&gap.sstd=2&evnid=fe62cbd2-8209-417b-8c99-c1093822eaad_1785592528493.8&ep.event_name=PageView&_et=16&ep.user_data._tag_mode=MANUAL&ep.user_data._tag_metadata.email.mode=m&tfd=1910&richsstsse",
+      "status": 200,
+      "type": "text/plain",
+      "size": 0
+    },
+    {
+      "url": "https://analytics.littlebird.ai/gtag/js?id=G-PTW8YKT8NV&cx=c&gtm=4e67u0h2&sign=14d379186ad2cc11eca7e77722ad12c27d9cba396423af324f8338f17b2a6385_20260801",
+      "status": 200,
+      "type": "application/javascript; charset=UTF-8",
+      "size": 0
+    },
+    {
+      "url": "https://analytics.littlebird.ai/gtag/js?id=G-VKL74VFV8W&cx=c&gtm=4e67u0h2&sign=14d379186ad2cc11eca7e77722ad12c27d9cba396423af324f8338f17b2a6385_20260801",
+      "status": 200,
+      "type": "application/javascript; charset=UTF-8",
+      "size": 0
+    },
+    {
+      "url": "https://analytics.littlebird.ai/gtm.js?id=GTM-KVQN5H7V",
+      "status": 200,
+      "type": "application/javascript; charset=UTF-8",
+      "size": 0
+    },
+    {
+      "url": "https://analytics.twitter.com/1/i/adsct?bci=4&dv=Asia%2FCalcutta%26en-US%2Cen%26Google%20Inc.%26Win32%26255%261440%26900%2616%2624%261440%26900%260%26na&eci=3&event=%7B%7D&event_id=45e5e21d-a164-4ed7-835c-9cfd8892bbc2&integration=gtm&p_id=Twitter&p_user_id=0&pl_id=a0860155-88ad-409a-959f-57359c725019&pt=Littlebird%3A%20AI%20Assistant%20With%20a%20Memory%20of%20Your%20Work&tw_document_href=https%3A%2F%2Flittlebird.ai%2F&tw_iframe_status=0&tw_pid_src=1&twpid=tw.1785592529666.402340292514785801&txn_id=psk7r&type=javascript&version=2.4.1",
+      "status": 200,
+      "type": "image/gif;charset=utf-8",
+      "size": 43
+    },
+    {
+      "url": "https://analytics.twitter.com/i/adsct?bci=4&cv=79%261&dv=Asia%2FCalcutta%26en-US%2Cen%26Google%20Inc.%26Win32%26255%261440%26900%2616%2624%261440%26900%260%26na&eci=2&event_id=3a852f89-093b-49de-8b65-d4e2e57a3e52&events=%5B%5B%22auto_long_site_dwell%22%2C%7B%7D%5D%5D&integration=gtm&p_id=Twitter&p_user_id=0&pl_id=a0860155-88ad-409a-959f-57359c725019&pt=Littlebird%3A%20AI%20Assistant%20With%20a%20Memory%20of%20Your%20Work&tw_document_href=https%3A%2F%2Flittlebird.ai%2F&tw_iframe_status=0&tw_pid_src=1&twpid=tw.1785592529666.402340292514785801&txn_id=psk7r&type=javascript&version=2.4.1",
+      "status": 200,
+      "type": "image/gif;charset=utf-8",
+      "size": 43
+    },
+    {
+      "url": "https://api-na2.hubapi.com/hs-script-loader-public/v2/config/pixels-and-events/json?portalId=242795703",
+      "status": 200,
+      "type": "application/json;charset=utf-8",
+      "size": 233
+    },
+    {
+      "url": "https://api.intellimize.co/context-v2/117727286",
+      "status": 200,
+      "type": "application/json",
+      "size": 0
+    },
+    {
+      "url": "https://api.intellimize.co/prediction/117727286",
+      "status": 200,
+      "type": "application/json",
+      "size": 0
+    },
+    {
+      "url": "https://beehiiv-adnetwork-production.s3.amazonaws.com/pixel-v2.js",
+      "status": 200,
+      "type": "text/javascript",
+      "size": 20005
+    },
+    {
+      "url": "https://bzr.openai.com/v1/sdk/events?pid=LYtCa9n6T2BntCKzbsLXWd&st=oaiq-web&sv=0.1.18&t=1785592530897&ec=4",
+      "status": 202,
+      "type": "",
+      "size": 0
+    },
+    {
+      "url": "https://bzrcdn.openai.com/pixel-config/v1/LYtCa9n6T2BntCKzbsLXWd.json",
+      "status": 200,
+      "type": "application/json",
+      "size": 44
+    },
+    {
+      "url": "https://bzrcdn.openai.com/sdk/oaiq.min.js",
+      "status": 200,
+      "type": "text/javascript",
+      "size": 0
+    },
+    {
+      "url": "https://capi-automation.s3.us-east-2.amazonaws.com/public/client_js/capiParamBuilder/clientParamBuilder.bundle.js",
+      "status": 200,
+      "type": "application/javascript",
+      "size": 64294
+    },
+    {
+      "url": "https://cdn-cookieyes.com/assets/images/close.svg",
+      "status": 200,
+      "type": "image/svg+xml",
+      "size": 0
+    },
+    {
+      "url": "https://cdn-cookieyes.com/assets/images/revisit.svg",
+      "status": 200,
+      "type": "image/svg+xml",
+      "size": 0
+    },
+    {
+      "url": "https://cdn-cookieyes.com/client_data/af7cf11bd54428ca3863819d0a9d12a8/aSV57dDR.json",
+      "status": 200,
+      "type": "application/json",
+      "size": 0
+    },
+    {
+      "url": "https://cdn-cookieyes.com/client_data/af7cf11bd54428ca3863819d0a9d12a8/audit-table/VVnpCQ-D.json",
+      "status": 200,
+      "type": "application/json",
+      "size": 0
+    },
+    {
+      "url": "https://cdn-cookieyes.com/client_data/af7cf11bd54428ca3863819d0a9d12a8/banner.js",
+      "status": 200,
+      "type": "application/javascript",
+      "size": 0
+    },
+    {
+      "url": "https://cdn-cookieyes.com/client_data/af7cf11bd54428ca3863819d0a9d12a8/config/zAliJycq.json",
+      "status": 200,
+      "type": "application/json",
+      "size": 0
+    },
+    {
+      "url": "https://cdn-cookieyes.com/client_data/af7cf11bd54428ca3863819d0a9d12a8/script.js",
+      "status": 200,
+      "type": "application/javascript",
+      "size": 0
+    },
+    {
+      "url": "https://cdn-cookieyes.com/client_data/af7cf11bd54428ca3863819d0a9d12a8/translations/rRpeoXF-.json",
+      "status": 200,
+      "type": "application/json",
+      "size": 0
+    },
+    {
+      "url": "https://cdn.intellimize.co/snippet/117727286.js",
+      "status": 200,
+      "type": "application/javascript;charset=utf-8",
+      "size": 88000
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631/694044becaef479b61a5b139_TestSo%CC%88hne-Buch.otf",
+      "status": 200,
+      "type": "font/otf",
+      "size": 0
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631/6940462a5c09f40eace8d8c3_apple.svg",
+      "status": 200,
+      "type": "image/svg+xml",
+      "size": 0
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631/69417765587c591e77bce9fb_plus.svg",
+      "status": 200,
+      "type": "image/svg+xml",
+      "size": 0
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631/69417ad6a3dc4c17a9b50370_logo.svg",
+      "status": 200,
+      "type": "image/svg+xml",
+      "size": 0
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631/697faf7cfcb938640a0d5930_Meraki-Regular.woff2",
+      "status": 200,
+      "type": "font/woff2",
+      "size": 45704
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631/69d914575497c5b1d6756637_soehne-kraftig.woff2",
+      "status": 200,
+      "type": "font/woff2",
+      "size": 36276
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631/69d914576a79c4853e8a697e_soehne-halbfett.woff2",
+      "status": 200,
+      "type": "font/woff2",
+      "size": 39264
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631/69d98f486a965b6c617e990d_icon-apple.svg",
+      "status": 200,
+      "type": "image/svg+xml",
+      "size": 0
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631/69d98f8961d9b039a3a0ea63_icon-windows.svg",
+      "status": 200,
+      "type": "image/svg+xml",
+      "size": 0
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631/6a2c1b03929ddf1044f68b53_28558a633101a5e79d126e4204470867_card-meeting.svg",
+      "status": 200,
+      "type": "image/svg+xml",
+      "size": 0
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631/6a2c1b05184649026d35cc34_040830d54f87afb218ed4f86f13fa746_card-podcast.svg",
+      "status": 200,
+      "type": "image/svg+xml",
+      "size": 0
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631/6a2c1b091f6b79f8c53b428f_f6f5eae993c7c3f1cd355a729e5b7e38_card-sheets.svg",
+      "status": 200,
+      "type": "image/svg+xml",
+      "size": 0
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631/6a2c1b0d8eae318d3d5f2806_e68e874083573e4355151231a2d0b8e3_card-gmail.svg",
+      "status": 200,
+      "type": "image/svg+xml",
+      "size": 0
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631/6a2c1b14df35db5ad0d619fe_8a55543a794e72754bd01a42f91cde23_card-slack.svg",
+      "status": 200,
+      "type": "image/svg+xml",
+      "size": 0
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631/6a2c1b2cdcd566f6dc7c5f54_f8a24c64b6a3a908ac5bf5ba910386fd_card-people.svg",
+      "status": 200,
+      "type": "image/svg+xml",
+      "size": 0
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631/6a2c1b32e2078bf8e0c98168_96c6d651705766b7a5e1e2d6e26cbd7e_card-preferences.svg",
+      "status": 200,
+      "type": "image/svg+xml",
+      "size": 0
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631/6a2c1b375782e7286020f3a0_d7e137ab9c70accca31429f297facbe4_card-current-focus.svg",
+      "status": 200,
+      "type": "image/svg+xml",
+      "size": 0
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631/6a2c1b3b171a493a3c68d8b7_08d6f35b2617579aab851334cf136a6c_card-meeting-summary.svg",
+      "status": 200,
+      "type": "image/svg+xml",
+      "size": 0
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631/6a2c1b3f1f6b79f8c53b6963_card-biology.svg",
+      "status": 200,
+      "type": "image/svg+xml",
+      "size": 0
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631/6a2c1b43f4027b0a4c662db0_3cf4994323e45dc5d7e3901bfe7e15a5_card-tasks.svg",
+      "status": 200,
+      "type": "image/svg+xml",
+      "size": 0
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631/6a2c221e15a21be37acfbf14_d268b788afa42fcfc8a24c188f13d14c_rays.svg",
+      "status": 200,
+      "type": "image/svg+xml",
+      "size": 0
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631/6a38d0d6310b607886696f34_ece5b68e31eeb5f49066893cd3009936_privacy-2.webp",
+      "status": 200,
+      "type": "image/webp",
+      "size": 223824
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631/6a38d0d69c579127ee1ba87f_privacy-1.webp",
+      "status": 200,
+      "type": "image/webp",
+      "size": 79374
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631/6a38d47071f43943046e7764_c45c8cb1002db07a203cc11365ed585d_privacy-3.webp",
+      "status": 200,
+      "type": "image/webp",
+      "size": 175084
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631/6a55a1a9f5ab5e84cf76a3b5_69603245cff328dc64a18f61_Base%20Icon%20%5BDO%20NOT%20EDIT%5D%206.png",
+      "status": 200,
+      "type": "image/png",
+      "size": 854
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631/css/littlebird-2b10c6.webflow.shared.019c03c1b.min.css",
+      "status": 200,
+      "type": "text/css",
+      "size": 0
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631/js/webflow.9dc7147d.dcf88aac8f2d075e.js",
+      "status": 200,
+      "type": "text/javascript",
+      "size": 0
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631/js/webflow.schunk.36b8fb49256177c8.js",
+      "status": 200,
+      "type": "text/javascript",
+      "size": 0
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631/js/webflow.schunk.67d50bb0fce1b27b.js",
+      "status": 200,
+      "type": "text/javascript",
+      "size": 0
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631/js/webflow.schunk.9dfb96661114d3db.js",
+      "status": 200,
+      "type": "text/javascript",
+      "size": 0
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631%2F689e5ba67671442434f3ca35%2F69f98c6c414043be06cce036%2Fdownloadosdetect-1.0.3.js",
+      "status": 200,
+      "type": "application/javascript",
+      "size": 764
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631%2F689e5ba67671442434f3ca35%2F6a2c233d68e68ca60ff9de10%2Fcardsscrollrevealv3-1.0.0-1781794976879.js",
+      "status": 200,
+      "type": "application/javascript",
+      "size": 782
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631%2F689e5ba67671442434f3ca35%2F6a2fa14d4bf2c2384d66c7b1%2Fembedscrollplay2-1.1.0.js",
+      "status": 200,
+      "type": "application/javascript",
+      "size": 361
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631%2F689e5ba67671442434f3ca35%2F6a2fa409f34b94d65b976534%2Fnavdropdownreveal-1.0.0.js",
+      "status": 200,
+      "type": "application/javascript",
+      "size": 280
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631%2F689e5ba67671442434f3ca35%2F6a300670d1648d69c221a5bd%2Fherovidsafarimask-1.0.0-1781592055583.js",
+      "status": 200,
+      "type": "application/javascript",
+      "size": 374
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631%2F689e5ba67671442434f3ca35%2F6a3016ac20f2e168df5c35bc%2Fnavscrollreveal-1.0.0-1781595162026.js",
+      "status": 200,
+      "type": "application/javascript",
+      "size": 928
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631%2F689e5ba67671442434f3ca35%2F6a33754ea883a9b8b6c68b36%2Fctaosshare-1.0.0.js",
+      "status": 200,
+      "type": "application/javascript",
+      "size": 339
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631%2F689e5ba67671442434f3ca35%2F6a3400fd9530080128df48a3%2Fheroembedautoheight-1.0.0.js",
+      "status": 200,
+      "type": "application/javascript",
+      "size": 230
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631%2F689e5ba67671442434f3ca35%2F6a3406838dfe4261b3adee06%2Fcardsheadingpop-1.0.0-1781795757558.js",
+      "status": 200,
+      "type": "application/javascript",
+      "size": 461
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631%2F689e5ba67671442434f3ca35%2F6a39069a3ba706406e33a258%2Fnavmobilemenu-1.0.3.js",
+      "status": 200,
+      "type": "application/javascript",
+      "size": 763
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631%2F689e5ba67671442434f3ca35%2F6a393f5aadb9dcbc4060d650%2Ffaqaccordion-1.0.6.js",
+      "status": 200,
+      "type": "application/javascript",
+      "size": 680
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631%2F689e5ba67671442434f3ca35%2F6a3979fb7622839f8d156ea0%2Fctaiconfix-1.0.0.js",
+      "status": 200,
+      "type": "application/javascript",
+      "size": 275
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631%2F689e5ba67671442434f3ca35%2F6a62665e4aff83e8bb4f93bc%2Fnavblogfeed-1.0.0.js",
+      "status": 200,
+      "type": "application/javascript",
+      "size": 762
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631%2F689e5ba67671442434f3ca35%2F6a672118e165e8a1dfb3865c%2Fteamshowstepper-1.0.0.js",
+      "status": 200,
+      "type": "application/javascript",
+      "size": 740
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631%2F689e5ba67671442434f3ca35%2F6a6af2948d1c957f0ad0a6fd%2Flbembedbridge-1.0.0.js",
+      "status": 200,
+      "type": "application/javascript",
+      "size": 287
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631%2F6a3273754a991939936cb189_bg-vid%20%281%29_mp4.mp4",
+      "status": 206,
+      "type": "video/mp4",
+      "size": 1973079
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/694043d273dceabab479f631%2F6a3273754a991939936cb189_bg-vid%20%281%29_poster.0000000.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "size": 128997
+    },
+    {
+      "url": "https://challenges.cloudflare.com/turnstile/v0/api.js",
+      "status": 302,
+      "type": "",
+      "size": 0
+    },
+    {
+      "url": "https://challenges.cloudflare.com/turnstile/v0/g/f70cb37711aa/api.js",
+      "status": 200,
+      "type": "application/javascript; charset=UTF-8",
+      "size": 0
+    },
+    {
+      "url": "https://comet-serve.com/e/t?space_id=4503599721000002",
+      "status": 200,
+      "type": "text/html; charset=UTF-8",
+      "size": 0
+    },
+    {
+      "url": "https://connect.facebook.net/en_US/fbevents.js",
+      "status": 200,
+      "type": "application/x-javascript; charset=utf-8",
+      "size": 106186
+    },
+    {
+      "url": "https://connect.facebook.net/signals/config/1052512676800353?v=2.9.368&r=stable&domain=littlebird.ai&hme=78c3d709c6e52779dc9d6e8b8770857bb5dfd27159797805bacb5f93b9e7568a&ex_m=108%2C210%2C160%2C22%2C73%2C74%2C151%2C69%2C68%2C11%2C169%2C93%2C16%2C143%2C131%2C39%2C76%2C81%2C139%2C165%2C171%2C26%2C27%2C28%2C30%2C48%2C152%2C78%2C116%2C18%2C20%2C44%2C40%2C42%2C41%2C86%2C95%2C99%2C114%2C150%2C153%2C46%2C115%2C24%2C21%2C123%2C70%2C36%2C155%2C154%2C156%2C147%2C145%2C25%2C35%2C59%2C113%2C167%2C71%2C17%2C158%2C118%2C84%2C67%2C19%2C88%2C89%2C120%2C87%2C141%2C140%2C144%2C100%2C166%2C34%2C49%2C117%2C47%2C8%2C4%2C5%2C7%2C6%2C3%2C94%2C105%2C172%2C177%2C224%2C75%2C237%2C236%2C235%2C23%2C33%2C55%2C107%2C61%2C10%2C64%2C101%2C102%2C103%2C109%2C134%2C31%2C29%2C136%2C137%2C138%2C133%2C132%2C161%2C77%2C164%2C162%2C163%2C50%2C60%2C127%2C15%2C168%2C45%2C281%2C282%2C280%2C295%2C313%2C217%2C206%2C62%2C207%2C205%2C316%2C307%2C52%2C218%2C111%2C135%2C83%2C125%2C54%2C124%2C130%2C129%2C58%2C65%2C63%2C157%2C79%2C80%2C119%2C37%2C32%2C53%2C56%2C104%2C170%2C1%2C128%2C14%2C126%2C12%2C2%2C57%2C96%2C66%2C122%2C92%2C91%2C173%2C174%2C97%2C98%2C9%2C106%2C51%2C148%2C90%2C82%2C72%2C121%2C110%2C43%2C149%2C0%2C85%2C142%2C146%2C159%2C38%2C112%2C13%2C175%2C234%2C232%2C227%2C229%2C230%2C231%2C228%2C216%2C233%2C226%2C239%2C198%2C192%2C196%2C197%2C195%2C190%2C337%2C265%2C268%2C271%2C272%2C273%2C269%2C274%2C267%2C263%2C275%2C276%2C266%2C270%2C277%2C278%2C264%2C209%2C262%2C201%2C193%2C194%2C220%2C191%2C189%2C215%2C241%2C211%2C183%2C184%2C179%2C185%2C182%2C180%2C181%2C178%2C176%2C187%2C188%2C186%2C283%2C336%2C304%2C302%2C303%2C301%2C199%2C244%2C251%2C245%2C247%2C250%2C248%2C249%2C246%2C243%2C260%2C255%2C257%2C254%2C261%2C258%2C253%2C259%2C256%2C252%2C297%2C310",
+      "status": 200,
+      "type": "application/x-javascript; charset=utf-8",
+      "size": 0
+    },
+    {
+      "url": "https://connect.facebook.net/signals/config/570453202611564?v=2.9.368&r=stable&domain=littlebird.ai&hme=78c3d709c6e52779dc9d6e8b8770857bb5dfd27159797805bacb5f93b9e7568a&ex_m=108%2C210%2C160%2C22%2C73%2C74%2C151%2C69%2C68%2C11%2C169%2C93%2C16%2C143%2C131%2C39%2C76%2C81%2C139%2C165%2C171%2C26%2C27%2C28%2C30%2C48%2C152%2C78%2C116%2C18%2C20%2C44%2C40%2C42%2C41%2C86%2C95%2C99%2C114%2C150%2C153%2C46%2C115%2C24%2C21%2C123%2C70%2C36%2C155%2C154%2C156%2C147%2C145%2C25%2C35%2C59%2C113%2C167%2C71%2C17%2C158%2C118%2C84%2C67%2C19%2C88%2C89%2C120%2C87%2C141%2C140%2C144%2C100%2C166%2C34%2C49%2C117%2C47%2C8%2C4%2C5%2C7%2C6%2C3%2C94%2C105%2C172%2C177%2C224%2C75%2C237%2C236%2C235%2C23%2C33%2C55%2C107%2C61%2C10%2C64%2C101%2C102%2C103%2C109%2C134%2C31%2C29%2C136%2C137%2C138%2C133%2C132%2C161%2C77%2C164%2C162%2C163%2C50%2C60%2C127%2C15%2C168%2C45%2C281%2C282%2C280%2C295%2C313%2C217%2C206%2C62%2C207%2C205%2C316%2C307%2C52%2C218%2C111%2C135%2C83%2C125%2C54%2C124%2C130%2C129%2C58%2C65%2C63%2C157%2C79%2C80%2C119%2C37%2C32%2C53%2C56%2C104%2C170%2C1%2C128%2C14%2C126%2C12%2C2%2C57%2C96%2C66%2C122%2C92%2C91%2C173%2C174%2C97%2C98%2C9%2C106%2C51%2C148%2C90%2C82%2C72%2C121%2C110%2C43%2C149%2C0%2C85%2C142%2C146%2C159%2C38%2C112%2C13%2C175",
+      "status": 200,
+      "type": "application/x-javascript; charset=utf-8",
+      "size": 0
+    },
+    {
+      "url": "https://connect.facebook.net/signals/config/664634585897035?v=2.9.368&r=stable&domain=littlebird.ai&hme=78c3d709c6e52779dc9d6e8b8770857bb5dfd27159797805bacb5f93b9e7568a&ex_m=108%2C210%2C160%2C22%2C73%2C74%2C151%2C69%2C68%2C11%2C169%2C93%2C16%2C143%2C131%2C39%2C76%2C81%2C139%2C165%2C171%2C26%2C27%2C28%2C30%2C48%2C152%2C78%2C116%2C18%2C20%2C44%2C40%2C42%2C41%2C86%2C95%2C99%2C114%2C150%2C153%2C46%2C115%2C24%2C21%2C123%2C70%2C36%2C155%2C154%2C156%2C147%2C145%2C25%2C35%2C59%2C113%2C167%2C71%2C17%2C158%2C118%2C84%2C67%2C19%2C88%2C89%2C120%2C87%2C141%2C140%2C144%2C100%2C166%2C34%2C49%2C117%2C47%2C8%2C4%2C5%2C7%2C6%2C3%2C94%2C105%2C172%2C177%2C224%2C75%2C237%2C236%2C235%2C23%2C33%2C55%2C107%2C61%2C10%2C64%2C101%2C102%2C103%2C109%2C134%2C31%2C29%2C136%2C137%2C138%2C133%2C132%2C161%2C77%2C164%2C162%2C163%2C50%2C60%2C127%2C15%2C168%2C45%2C281%2C282%2C280%2C295%2C313%2C217%2C206%2C62%2C207%2C205%2C316%2C307%2C52%2C218%2C111%2C135%2C83%2C125%2C54%2C124%2C130%2C129%2C58%2C65%2C63%2C157%2C79%2C80%2C119%2C37%2C32%2C53%2C56%2C104%2C170%2C1%2C128%2C14%2C126%2C12%2C2%2C57%2C96%2C66%2C122%2C92%2C91%2C173%2C174%2C97%2C98%2C9%2C106%2C51%2C148%2C90%2C82%2C72%2C121%2C110%2C43%2C149%2C0%2C85%2C142%2C146%2C159%2C38%2C112%2C13%2C175%2C234%2C232%2C227%2C229%2C230%2C231%2C228%2C216%2C233%2C226%2C239%2C198%2C192%2C196%2C197%2C195%2C190%2C337%2C265%2C268%2C271%2C272%2C273%2C269%2C274%2C267%2C263%2C275%2C276%2C266%2C270%2C277%2C278%2C264%2C209%2C262%2C201%2C193%2C194%2C220%2C191%2C189%2C215%2C241%2C211%2C183%2C184%2C179%2C185%2C182%2C180%2C181%2C178%2C176%2C187%2C188%2C186%2C283%2C336%2C304%2C302%2C303%2C301%2C199%2C244%2C251%2C245%2C247%2C250%2C248%2C249%2C246%2C243%2C260%2C255%2C257%2C254%2C261%2C258%2C253%2C259%2C256%2C252%2C297%2C310",
+      "status": 200,
+      "type": "application/x-javascript; charset=utf-8",
+      "size": 0
+    },
+    {
+      "url": "https://cta-na2.hubspot.com/web-interactives/public/v1/embed/combinedConfigs?portalId=242795703&currentUrl=https%3A%2F%2Flittlebird.ai%2F",
+      "status": 200,
+      "type": "application/json;charset=utf-8",
+      "size": 0
+    },
+    {
+      "url": "https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=694043d273dceabab479f631",
+      "status": 200,
+      "type": "application/javascript",
+      "size": 0
+    },
+    {
+      "url": "https://directory.cookieyes.com/api/v1/ip",
+      "status": 200,
+      "type": "text/plain; charset=utf-8",
+      "size": 0
+    },
+    {
+      "url": "https://embeds.littlebird.ai/cdn-cgi/rum?",
+      "status": 204,
+      "type": "text/plain",
+      "size": 0
+    },
+    {
+      "url": "https://embeds.littlebird.ai/fonts/meraki-400.woff2",
+      "status": 200,
+      "type": "font/woff2",
+      "size": 40572
+    },
+    {
+      "url": "https://embeds.littlebird.ai/fonts/sohne-400.woff2",
+      "status": 200,
+      "type": "font/woff2",
+      "size": 71020
+    },
+    {
+      "url": "https://embeds.littlebird.ai/fonts/sohne-600.woff2",
+      "status": 200,
+      "type": "font/woff2",
+      "size": 71652
+    },
+    {
+      "url": "https://embeds.littlebird.ai/hero-tabs-animation-responsive-2.html",
+      "status": 200,
+      "type": "text/html",
+      "size": 0
+    },
+    {
+      "url": "https://forms-na2.hscollectedforms.net/collected-forms/v1/config/json?portalId=242795703&utk=",
+      "status": 200,
+      "type": "application/json;charset=utf-8",
+      "size": 0
+    },
+    {
+      "url": "https://forms-na2.hsforms.com/embed/v3/counters.gif?key=collected-forms-embed-js-form-bind&count=2",
+      "status": 200,
+      "type": "image/gif",
+      "size": 35
+    },
+    {
+      "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/17082450534/?random=1785592530225&cv=11&fst=1785592530225&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be67t1v9220074250z89220418660za200zb9220418660zd9220418660xec&gcd=13r3r3r2r5l1&dma=0&tag_exp=115938465~115938468~118897920~118897930~119896802~120222309&u_w=1440&u_h=900&url=https%3A%2F%2Flittlebird.ai%2F&rcb=19&frm=0&tiba=Littlebird%3A%20AI%20Assistant%20With%20a%20Memory%20of%20Your%20Work&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=1077765236.1785592530&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.187%7CGoogle%2520Chrome%3B150.0.7871.187&uamb=0&uam=&uap=Windows&uapv=19.0.0&uaw=0&_tu=BA&data=event%3Dgtag.config&ept=9&rfmt=3&fmt=4",
+      "status": 200,
+      "type": "text/javascript; charset=UTF-8",
+      "size": 2683
+    },
+    {
+      "url": "https://ingestion.prod.apiarydata.net/api/v2/ingestion/pixel",
+      "status": 201,
+      "type": "",
+      "size": 0
+    },
+    {
+      "url": "https://js-na2.hs-analytics.net/analytics/1785589800000/242795703.js",
+      "status": 200,
+      "type": "text/javascript",
+      "size": 0
+    },
+    {
+      "url": "https://js-na2.hs-banner.com/v2/242795703/banner.js",
+      "status": 200,
+      "type": "text/javascript; charset=UTF-8",
+      "size": 0
+    },
+    {
+      "url": "https://js-na2.hs-scripts.com/242795703.js",
+      "status": 200,
+      "type": "application/javascript;charset=utf-8",
+      "size": 750
+    },
+    {
+      "url": "https://js-na2.hsadspixel.net/pixels.js",
+      "status": 200,
+      "type": "application/javascript; charset=utf-8",
+      "size": 0
+    },
+    {
+      "url": "https://js-na2.hscollectedforms.net/collectedforms.js",
+      "status": 200,
+      "type": "application/javascript; charset=utf-8",
+      "size": 0
+    },
+    {
+      "url": "https://js-na2.hubspot.com/web-interactives-embed.js",
+      "status": 200,
+      "type": "application/javascript; charset=utf-8",
+      "size": 0
+    },
+    {
+      "url": "https://littlebird.ai/",
+      "status": 200,
+      "type": "text/html; charset=utf-8",
+      "size": 0
+    },
+    {
+      "url": "https://littlebird.ai/blog",
+      "status": 200,
+      "type": "text/html; charset=utf-8",
+      "size": 0
+    },
+    {
+      "url": "https://log.cookieyes.com/api/v1/log",
+      "status": 200,
+      "type": "",
+      "size": 0
+    },
+    {
+      "url": "https://log.intellimize.co/logger",
+      "status": 200,
+      "type": "application/json",
+      "size": 0
+    },
+    {
+      "url": "https://log.intellimize.co/logger",
+      "status": 200,
+      "type": "application/json",
+      "size": 0
+    },
+    {
+      "url": "https://log.intellimize.co/logger",
+      "status": 200,
+      "type": "application/json",
+      "size": 0
+    },
+    {
+      "url": "https://m.littlebird.ai/script.js?uid=e691f6-4503599721000002-cba2a7-s",
+      "status": 200,
+      "type": "application/javascript",
+      "size": 0
+    },
+    {
+      "url": "https://perf-na2.hsforms.com/embed/v3/counters.gif?key=config-loaded-success&value=1",
+      "status": 200,
+      "type": "image/gif",
+      "size": 35
+    },
+    {
+      "url": "https://pixel.tapad.com/idsync/ex/receive?partner_id=2994&partner_device_id=1e6e99a22c77f792d030a879734bf904",
+      "status": 302,
+      "type": "",
+      "size": 0
+    },
+    {
+      "url": "https://pixel.tapad.com/idsync/ex/receive/check?partner_id=2994&partner_device_id=1e6e99a22c77f792d030a879734bf904",
+      "status": 200,
+      "type": "image/png",
+      "size": 95
+    },
+    {
+      "url": "https://px.ads.linkedin.com/attribution_trigger?pid=7202522&time=1785592529686&url=https%3A%2F%2Flittlebird.ai%2F&eventId=1785592851796_17855929059767&tm=gtmv2",
+      "status": 200,
+      "type": "application/json",
+      "size": 0
+    },
+    {
+      "url": "https://px.ads.linkedin.com/collect?v=2&fmt=js&pid=7202522&time=1785592529686&li_adsId=1795aa6c-1881-4517-8044-cf168a62ac47&url=https%3A%2F%2Flittlebird.ai%2F&tm=gtmv2&eventId=1785592851796_17855929059767",
+      "status": 302,
+      "type": "",
+      "size": 0
+    },
+    {
+      "url": "https://px.ads.linkedin.com/collect?v=2&fmt=js&pid=7202522&time=1785592529686&li_adsId=1795aa6c-1881-4517-8044-cf168a62ac47&url=https%3A%2F%2Flittlebird.ai%2F&tm=gtmv2&eventId=1785592851796_17855929059767&cookiesTest=true",
+      "status": 302,
+      "type": "",
+      "size": 0
+    },
+    {
+      "url": "https://px.ads.linkedin.com/collect?v=2&fmt=js&pid=7202522&time=1785592529686&li_adsId=1795aa6c-1881-4517-8044-cf168a62ac47&url=https%3A%2F%2Flittlebird.ai%2F&tm=gtmv2&eventId=1785592851796_17855929059767&cookiesTest=true&liSync=true",
+      "status": 302,
+      "type": "",
+      "size": 0
+    },
+    {
+      "url": "https://px.ads.linkedin.com/wa/?medium=fetch&fmt=g",
+      "status": 204,
+      "type": "",
+      "size": 0
+    },
+    {
+      "url": "https://px4.ads.linkedin.com/collect?v=2&fmt=js&pid=7202522&time=1785592529686&li_adsId=1795aa6c-1881-4517-8044-cf168a62ac47&url=https%3A%2F%2Flittlebird.ai%2F&tm=gtmv2&eventId=1785592851796_17855929059767&cookiesTest=true&liSync=true&e_ipv6=AQKLd_Z8X5As6QAAAZ-9m71JkdtRKdBIwu26PhQnMuMJ7F4uQOpRPrOemTbr0Tc4oc7zH7SZOTcZZtR1XD8BMpweLAw",
+      "status": 200,
+      "type": "application/javascript",
+      "size": 0
+    },
+    {
+      "url": "https://snap.licdn.com/li.lms-analytics/insight.min.js",
+      "status": 200,
+      "type": "application/javascript;charset=utf-8",
+      "size": 20578
+    },
+    {
+      "url": "https://snap.licdn.com/li.lms-analytics/insight.old.min.js",
+      "status": 200,
+      "type": "application/javascript;charset=utf-8",
+      "size": 18894
+    },
+    {
+      "url": "https://static.ads-twitter.com/uwt.js",
+      "status": 200,
+      "type": "application/javascript; charset=utf-8",
+      "size": 13718
+    },
+    {
+      "url": "https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496",
+      "status": 200,
+      "type": "text/javascript;charset=UTF-8",
+      "size": 0
+    },
+    {
+      "url": "https://stats.g.doubleclick.net/g/collect?v=2&dma=0&npa=0&gcs=G111&gcd=13r3r3r2r5l1&tid=G-VKL74VFV8W&cid=ukSxCmgD3snNYxM0DthRvPTCnY5GLk3BpCN1N6FZPXM%3D.1785592530&gtm=45b91e67t0v9220074250z89220418660z99229554232za200zb9220418660zd9220418660&tag_exp=115938465~115938468~118032361~118032361~118897920~118897930~119896802~120222309&_is_sw=f15s0t1&_tu=BA&gap.sstd=2&aip=1",
+      "status": 204,
+      "type": "text/plain",
+      "size": 0
+    },
+    {
+      "url": "https://t.co/1/i/adsct?bci=4&dv=Asia%2FCalcutta%26en-US%2Cen%26Google%20Inc.%26Win32%26255%261440%26900%2616%2624%261440%26900%260%26na&eci=3&event=%7B%7D&event_id=45e5e21d-a164-4ed7-835c-9cfd8892bbc2&integration=gtm&p_id=Twitter&p_user_id=0&pl_id=a0860155-88ad-409a-959f-57359c725019&pt=Littlebird%3A%20AI%20Assistant%20With%20a%20Memory%20of%20Your%20Work&tw_document_href=https%3A%2F%2Flittlebird.ai%2F&tw_iframe_status=0&tw_pid_src=1&twpid=tw.1785592529666.402340292514785801&txn_id=psk7r&type=javascript&version=2.4.1",
+      "status": 200,
+      "type": "image/gif;charset=utf-8",
+      "size": 43
+    },
+    {
+      "url": "https://t.co/i/adsct?bci=4&cv=79%261&dv=Asia%2FCalcutta%26en-US%2Cen%26Google%20Inc.%26Win32%26255%261440%26900%2616%2624%261440%26900%260%26na&eci=2&event_id=3a852f89-093b-49de-8b65-d4e2e57a3e52&events=%5B%5B%22auto_long_site_dwell%22%2C%7B%7D%5D%5D&integration=gtm&p_id=Twitter&p_user_id=0&pl_id=a0860155-88ad-409a-959f-57359c725019&pt=Littlebird%3A%20AI%20Assistant%20With%20a%20Memory%20of%20Your%20Work&tw_document_href=https%3A%2F%2Flittlebird.ai%2F&tw_iframe_status=0&tw_pid_src=1&twpid=tw.1785592529666.402340292514785801&txn_id=psk7r&type=javascript&version=2.4.1",
+      "status": 200,
+      "type": "image/gif;charset=utf-8",
+      "size": 43
+    },
+    {
+      "url": "https://track-na2.hubspot.com/__ptq.gif?k=1&sd=1440x900&cd=24-bit&cs=UTF-8&ln=en-us&bfp=b61997d22d6f8fc1e7f3f6172396d66b&v=1.1&a=242795703&rcu=https%3A%2F%2Flittlebird.ai%2F&pu=https%3A%2F%2Flittlebird.ai%2F&t=Littlebird%3A+AI+Assistant+With+a+Memory+of+Your+Work&cts=1785592531281&vi=a0aa1dd01d29d1549b9ed72682824c2a&nc=true&u=202884238.a0aa1dd01d29d1549b9ed72682824c2a.1785592531279.1785592531279.1785592531279.1&b=202884238.1.1785592531279&cc=15",
+      "status": 200,
+      "type": "image/gif",
+      "size": 45
+    },
+    {
+      "url": "https://tracker.metricool.com/c3po.jpg?hash=acc2266c49682b012f2dac750a7ca708&u=https%3A%2F%2Flittlebird.ai%2F&bw=1440&bh=900",
+      "status": 200,
+      "type": "image/png",
+      "size": 0
+    },
+    {
+      "url": "https://tracker.metricool.com/resources/be.js",
+      "status": 200,
+      "type": "text/javascript",
+      "size": 0
+    },
+    {
+      "url": "https://us-43683-adswizz.attribution.adswizz.com/fire?pixelId=bf0a85a3-bd99-4a57-bddc-a5373120259d&type=sitevisit&subtype=HomePage&aw_0_req.gdpr=true&redirectURL=aHR0cHM6Ly9waXhlbC50YXBhZC5jb20vaWRzeW5jL2V4L3JlY2VpdmU_cGFydG5lcl9pZD0yOTk0JjwjaWYgcmVxdWVzdC5saXN0ZW5lcklkP21hdGNoZXMoJ1swLTlhLWZdezh9LVswLTlhLWZdezR9LVswLTlhLWZdezR9LVswLTlhLWZdezR9LVswLTlhLWZdezEyfScpPnBhcnRuZXJfdHlwZWRfZGlkPSU3QiUyMkhBUkRXQVJFX0FORFJPSURfQURfSUQlMjIlM0ElMjIke3JlcXVlc3QubGlzdGVuZXJJZH0lMjIlN0Q8I2Vsc2VpZiByZXF1ZXN0Lmxpc3RlbmVySWQ_bWF0Y2hlcygnWzAtOUEtRl17OH0tWzAtOUEtRl17NH0tWzAtOUEtRl17NH0tWzAtOUEtRl17NH0tWzAtOUEtRl17MTJ9Jyk-cGFydG5lcl90eXBlZF9kaWQ9JTdCJTIySEFSRFdBUkVfSURGQSUyMiUzQSUyMiR7cmVxdWVzdC5saXN0ZW5lcklkfSUyMiU3RDwjZWxzZT5wYXJ0bmVyX2RldmljZV9pZD0ke3JlcXVlc3QubGlzdGVuZXJJZCF9PC8jaWY-",
+      "status": 302,
+      "type": "",
+      "size": 0
+    },
+    {
+      "url": "https://us-assets.i.posthog.com/array/phc_j7ezH2XopoZRKqybsO2KrFj5sjkvp57mMyuNXfvnbH/config.js",
+      "status": 200,
+      "type": "application/javascript",
+      "size": 0
+    },
+    {
+      "url": "https://us-assets.i.posthog.com/static/array.js",
+      "status": 200,
+      "type": "application/javascript",
+      "size": 0
+    },
+    {
+      "url": "https://us-assets.i.posthog.com/static/dead-clicks-autocapture.js?v=1.409.5",
+      "status": 200,
+      "type": "application/javascript",
+      "size": 0
+    },
+    {
+      "url": "https://us-assets.i.posthog.com/static/posthog-recorder.js?v=1.409.5",
+      "status": 200,
+      "type": "application/javascript",
+      "size": 0
+    },
+    {
+      "url": "https://us-assets.i.posthog.com/static/surveys.js?v=1.409.5",
+      "status": 200,
+      "type": "application/javascript",
+      "size": 0
+    },
+    {
+      "url": "https://us.i.posthog.com/api/surveys/?token=phc_j7ezH2XopoZRKqybsO2KrFj5sjkvp57mMyuNXfvnbH&_=1785592531254",
+      "status": 200,
+      "type": "application/json",
+      "size": 0
+    },
+    {
+      "url": "https://us.i.posthog.com/flags/?v=2&compression=base64",
+      "status": 200,
+      "type": "application/json",
+      "size": 0
+    },
+    {
+      "url": "https://www.dubcdn.com/analytics/script.conversion-tracking.js",
+      "status": 200,
+      "type": "application/javascript",
+      "size": 0
+    },
+    {
+      "url": "https://www.google.co.in/ads/ga-audiences?v=1&t=sr&slf_rd=1&_r=4&dma=0&npa=0&gcs=G111&gcd=13r3r3r2r5l1&tid=G-VKL74VFV8W&cid=ukSxCmgD3snNYxM0DthRvPTCnY5GLk3BpCN1N6FZPXM%3D.1785592530&gtm=45b91e67t0v9220074250z89220418660z99229554232za200zb9220418660zd9220418660&tag_exp=115938465~115938468~118032361~118032361~118897920~118897930~119896802~120222309&_is_sw=f15s0t1&_tu=BA&gap.sstd=2&aip=1&z=390601942",
+      "status": 200,
+      "type": "image/gif",
+      "size": 42
+    },
+    {
+      "url": "https://www.google.co.in/ads/ga-audiences?v=1&t=sr&slf_rd=1&_r=4&dma=0&npa=0&gcs=G111&gcd=13r3r3r2r5l1&tid=G-VKL74VFV8W&cid=ukSxCmgD3snNYxM0DthRvPTCnY5GLk3BpCN1N6FZPXM%3D.1785592530&gtm=45b91e67t0v9220074250z89220418660z99229554232za200zb9220418660zd9220418660&tag_exp=115938465~115938468~118032361~118032361~118897920~118897930~119896802~120222309&_is_sw=f15s0t21&_tu=BA&gap.sstd=2&aip=1&z=1390944490",
+      "status": 200,
+      "type": "image/gif",
+      "size": 42
+    },
+    {
+      "url": "https://www.google.co.in/pagead/1p-user-list/17082450534/?random=1785592530225&cv=11&fst=1785589200000&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be67t1v9220074250z89220418660za200zb9220418660zd9220418660xec&gcd=13r3r3r2r5l1&dma=0&tag_exp=115938465~115938468~118897920~118897930~119896802~120222309&u_w=1440&u_h=900&url=https%3A%2F%2Flittlebird.ai%2F&rcb=19&frm=0&tiba=Littlebird%3A%20AI%20Assistant%20With%20a%20Memory%20of%20Your%20Work&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=1077765236.1785592530&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.187%7CGoogle%2520Chrome%3B150.0.7871.187&uamb=0&uam=&uap=Windows&uapv=19.0.0&uaw=0&_tu=BA&data=event%3Dgtag.config&ept=9&rfmt=3&fmt=3&is_vtc=1&cid=CAQS7AEAEQoqgRCBuBPfzFk4Bct-sMU2GDK7SyW1UJlugD_QeOL1fWceVxSvfeODaVjZEu3in_IhUo2O9FggBPP3odKbgQNVkTQVUW279eZFPyD1AM7zivih3eujwZ0jIN9SUReJx4lCoSIvnRUhlvxxhfpzihiO8NS6G4ZtZjHe5G0F6mW7vjPgA3HN0Mvr38i7M8o1TZoE82ZJBNqdZMgdPRdsVk93LCp5uVbX2u3cMtNeo5RDj0nlGWs0RieD4chK6V4GYb1d05Zi02o_PQQlJZjB4pKYH93D3atvp8cSfBCbY9OwmB9-6m32D--fTA&random=1641324777&rmt_tld=1&ipr=y",
+      "status": 200,
+      "type": "image/gif",
+      "size": 42
+    },
+    {
+      "url": "https://www.google.com/ccm/collect?rcb=13&frm=0&apvc=1&ae=g&auid=1077765236.1785592530&dt=Littlebird%3A%20AI%20Assistant%20With%20a%20Memory%20of%20Your%20Work&en=page_view&dl=https%3A%2F%2Flittlebird.ai%2F&scrsrc=analytics.littlebird.ai&rnd=441482564.1785592530&navt=n&npa=0&ep.ads_data_redaction=0&gdid=dY2Q2ZW&gtm=45Fe67u0h2v9220418660za200zd9220418660xea&gcs=G111&gcd=13r3r3r2r5l1&dma_cps=a&dma=1&tag_exp=115938465~115938468~118897920~118897930~119896803~120222309&tft=1785592529625&tfd=1292&gap.gtb=1&fmt=8",
+      "status": 200,
+      "type": "",
+      "size": 0
+    },
+    {
+      "url": "https://www.google.com/ccm/collect?rcb=19&frm=0&apvc=0&auid=1077765236.1785592530&dt=Littlebird%3A%20AI%20Assistant%20With%20a%20Memory%20of%20Your%20Work&tid=AW-17082450534&en=page_view&dl=https%3A%2F%2Flittlebird.ai%2F&scrsrc=www.googletagmanager.com&rnd=441482564.1785592530&navt=n&npa=0&_tu=BA&gtm=45be67t1v9220074250z89220418660za200zb9220418660zd9220418660xec&gcs=G111&gcd=13r3r3r2r5l1&dma=0&tag_exp=115938465~115938468~118897920~118897930~119896802~120222309&tft=1785592530243&tfd=1911&tids=AW-17082450534&fmt=8",
+      "status": 200,
+      "type": "",
+      "size": 0
+    },
+    {
+      "url": "https://www.google.com/pagead/1p-user-list/17082450534/?random=1785592530225&cv=11&fst=1785589200000&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be67t1v9220074250z89220418660za200zb9220418660zd9220418660xec&gcd=13r3r3r2r5l1&dma=0&tag_exp=115938465~115938468~118897920~118897930~119896802~120222309&u_w=1440&u_h=900&url=https%3A%2F%2Flittlebird.ai%2F&rcb=19&frm=0&tiba=Littlebird%3A%20AI%20Assistant%20With%20a%20Memory%20of%20Your%20Work&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=1077765236.1785592530&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.187%7CGoogle%2520Chrome%3B150.0.7871.187&uamb=0&uam=&uap=Windows&uapv=19.0.0&uaw=0&_tu=BA&data=event%3Dgtag.config&ept=9&rfmt=3&fmt=3&is_vtc=1&cid=CAQS7AEAEQoqgRCBuBPfzFk4Bct-sMU2GDK7SyW1UJlugD_QeOL1fWceVxSvfeODaVjZEu3in_IhUo2O9FggBPP3odKbgQNVkTQVUW279eZFPyD1AM7zivih3eujwZ0jIN9SUReJx4lCoSIvnRUhlvxxhfpzihiO8NS6G4ZtZjHe5G0F6mW7vjPgA3HN0Mvr38i7M8o1TZoE82ZJBNqdZMgdPRdsVk93LCp5uVbX2u3cMtNeo5RDj0nlGWs0RieD4chK6V4GYb1d05Zi02o_PQQlJZjB4pKYH93D3atvp8cSfBCbY9OwmB9-6m32D--fTA&random=1641324777&rmt_tld=0&ipr=y",
+      "status": 200,
+      "type": "image/gif",
+      "size": 42
+    },
+    {
+      "url": "https://www.google.com/rmkt/collect/17082450534/?random=1785592530225&cv=11&fst=1785592530225&fmt=8&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be67t1v9220074250z89220418660za200zb9220418660zd9220418660xec&gcd=13r3r3r2r5l1&dma=0&tag_exp=115938465~115938468~118897920~118897930~119896802~120222309&u_w=1440&u_h=900&url=https%3A%2F%2Flittlebird.ai%2F&rcb=19&frm=0&tiba=Littlebird%3A%20AI%20Assistant%20With%20a%20Memory%20of%20Your%20Work&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=1077765236.1785592530&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.187%7CGoogle%2520Chrome%3B150.0.7871.187&uamb=0&uam=&uap=Windows&uapv=19.0.0&uaw=0&_tu=BA&data=event%3Dgtag.config&ept=68&gcp=5",
+      "status": 200,
+      "type": "",
+      "size": 0
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=AW-17082450534",
+      "status": 200,
+      "type": "application/javascript; charset=UTF-8",
+      "size": 188996
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=AW-17082450534&cx=c&gtm=4e67u0h2&sign=14d379186ad2cc11eca7e77722ad12c27d9cba396423af324f8338f17b2a6385_20260801",
+      "status": 200,
+      "type": "application/javascript; charset=UTF-8",
+      "size": 189064
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtm.js?id=GTM-KVQN5H7V&gtg_health=1",
+      "status": 200,
+      "type": "application/javascript; charset=UTF-8",
+      "size": 137
+    },
+    {
+      "url": "https://www.linkedin.com/px/li_sync?redirect=https%3A%2F%2Fpx.ads.linkedin.com%2Fcollect%3Fv%3D2%26fmt%3Djs%26pid%3D7202522%26time%3D1785592529686%26li_adsId%3D1795aa6c-1881-4517-8044-cf168a62ac47%26url%3Dhttps%253A%252F%252Flittlebird.ai%252F%26tm%3Dgtmv2%26eventId%3D1785592851796_17855929059767%26cookiesTest%3Dtrue%26liSync%3Dtrue",
+      "status": 302,
+      "type": "",
+      "size": 0
+    },
+    {
+      "url": "https://www.redditstatic.com/ads/pixel.js?pixel_id=a2_h0yq1uxe7xh1",
+      "status": 200,
+      "type": "application/javascript",
+      "size": 19840
+    }
+  ],
+  "recoveredSources": [
+    "../../browser-common/dist/utils/globals.mjs",
+    "../src/utils/globals.ts",
+    "../../browser-common/dist/config.mjs",
+    "../../core/dist/featureFlagUtils.mjs",
+    "../../core/dist/gzip.mjs",
+    "../../core/dist/types.mjs",
+    "../../core/dist/utils/bot-detection.mjs",
+    "../../core/dist/utils/string-utils.mjs",
+    "../../core/dist/utils/type-utils.mjs",
+    "../../core/dist/utils/number-utils.mjs",
+    "../../core/dist/utils/bucketed-rate-limiter.mjs",
+    "../../core/dist/utils/user-agent-utils.mjs",
+    "../../core/dist/utils/index.mjs",
+    "../../core/dist/logs/logs-utils.mjs",
+    "../../core/dist/logs/index.mjs",
+    "../../core/dist/metrics/metrics-utils.mjs",
+    "../../core/dist/metrics/index.mjs",
+    "../../core/dist/error-tracking/chunk-ids.mjs",
+    "../../core/dist/error-tracking/error-properties-builder.mjs",
+    "../../core/dist/error-tracking/parsers/base.mjs",
+    "../../core/dist/error-tracking/parsers/safari.mjs",
+    "../../core/dist/error-tracking/parsers/chrome.mjs",
+    "../../core/dist/error-tracking/parsers/gecko.mjs",
+    "../../core/dist/error-tracking/parsers/index.mjs",
+    "../../core/dist/error-tracking/coercers/dom-exception-coercer.mjs",
+    "../../core/dist/error-tracking/coercers/error-coercer.mjs",
+    "../../core/dist/error-tracking/coercers/error-event-coercer.mjs",
+    "../../core/dist/error-tracking/coercers/string-coercer.mjs",
+    "../../core/dist/error-tracking/types.mjs",
+    "../../core/dist/error-tracking/coercers/utils.mjs",
+    "../../core/dist/error-tracking/coercers/object-coercer.mjs",
+    "../../core/dist/error-tracking/coercers/event-coercer.mjs",
+    "../../core/dist/error-tracking/coercers/primitive-coercer.mjs",
+    "../../core/dist/error-tracking/coercers/promise-rejection-event.mjs",
+    "../../core/dist/error-tracking/exception-steps.mjs",
+    "../../browser-common/dist/utils/logger.mjs",
+    "../src/entrypoints/external-scripts-loader.ts",
+    "../src/config.ts",
+    "../src/constants.ts",
+    "../../browser-common/dist/utils/general-utils.mjs",
+    "../../browser-common/dist/utils/cookie-utils.mjs",
+    "../../browser-common/dist/utils/uuidv7.mjs",
+    "../src/storage.ts",
+    "../src/consent.ts",
+    "../../browser-common/dist/utils/url-targeting-utils.mjs",
+    "../../browser-common/dist/constants.mjs",
+    "../../browser-common/dist/utils/element-utils.mjs",
+    "../../browser-common/dist/utils/autocapture-utils.mjs",
+    "../src/extensions/dead-clicks-autocapture.ts",
+    "../src/extensions/segment-integration.ts",
+    "../src/extensions/sentry-integration.ts",
+    "../src/page-view.ts",
+    "../src/persistence-key-transforms.ts",
+    "../src/persistence-key-policy.ts",
+    "../../browser-common/dist/utils/request-utils.mjs",
+    "../../browser-common/dist/utils/event-utils.mjs",
+    "../src/posthog-persistence.ts",
+    "../../browser-common/dist/disposable.mjs",
+    "../../browser-common/dist/types/compression.mjs",
+    "../../browser-common/dist/types/surveys.mjs",
+    "../src/rate-limiter.ts",
+    "../src/remote-config.ts",
+    "../../../../../../setup-pnpm/node_modules/.bin/store/v11/links/@/fflate/0.4.8/3d6bb6f51514b78f73eff8bf58c4fef7e18a9483e0eef595f39f3a49c6c31e1d/node_modules/fflate/esm/browser.js",
+    "../src/request.ts",
+    "../../browser-common/dist/utils/encode-utils.mjs",
+    "../src/request-queue.ts",
+    "../src/retry-queue.ts",
+    "../src/scroll-manager.ts",
+    "../src/session-props.ts",
+    "../../browser-common/dist/utils/simple-event-emitter.mjs",
+    "../src/sessionid.ts",
+    "../../browser-common/dist/utils/blocked-uas.mjs",
+    "../../browser-common/dist/utils/device-model-utils.mjs",
+    "../../browser-common/dist/utils/regex-utils.mjs",
+    "../../browser-common/dist/utils/property-utils.mjs",
+    "../src/utils/request-router.ts",
+    "../../core/dist/surveys/activation.mjs",
+    "../src/utils/survey-utils.ts",
+    "../../core/dist/surveys/keys.mjs",
+    "../src/extensions/external-integration.ts",
+    "../../browser-common/dist/extension-runtime.mjs",
+    "../src/extensions/browser-client.ts",
+    "../src/posthog-core.ts",
+    "../../core/dist/surveys/events.mjs",
+    "../src/posthog-product-tours-types.ts",
+    "../src/extensions/rageclick.ts",
+    "../src/autocapture.ts",
+    "../src/extensions/exception-autocapture/index.ts",
+    "../src/extensions/replay/rrweb-plugins/patch.ts",
+    "../src/extensions/tracing-headers.ts",
+    "../src/extensions/web-vitals/index.ts",
+    "../src/extensions/replay/external/triggerMatching.ts",
+    "../src/extensions/replay/external/recording-strategies.ts",
+    "../src/extensions/replay/external/lazy-loaded-session-recorder.ts",
+    "../src/extensions/replay/session-recording.ts",
+    "../src/heatmaps.ts",
+    "../src/posthog-product-tours.ts",
+    "../src/site-apps.ts",
+    "../../browser-common/dist/utils/elements-chain-utils.mjs",
+    "../src/extensions/surveys/action-matcher.ts",
+    "../src/utils/event-receiver.ts",
+    "../src/utils/survey-event-receiver.ts",
+    "../src/posthog-surveys.ts",
+    "../src/extensions/toolbar.ts",
+    "../src/posthog-featureflags.ts",
+    "../src/posthog-exceptions.ts",
+    "../src/web-experiments.ts",
+    "../src/extensions/conversations/posthog-conversations.ts",
+    "../src/posthog-logs.ts",
+    "../src/extensions/extension-bundles.ts",
+    "../src/extensions/history-autocapture.ts",
+    "../../core/dist/error-tracking/release.mjs",
+    "../src/logs-defaults.ts",
+    "../src/posthog-metrics.ts",
+    "../../core/dist/metrics/config.mjs",
+    "../src/entrypoints/default-extensions.ts",
+    "../src/entrypoints/array.no-external.ts",
+    "../../../../../../setup-pnpm/node_modules/.bin/store/v11/links/@/preact/10.29.3/140084fb8a57e97c29fa8a8c859027ef9e32ecc372b13de68ff8b4819864c7f8/node_modules/preact/dist/preact.module.js",
+    "../../../../../../setup-pnpm/node_modules/.bin/store/v11/links/@/preact/10.29.3/140084fb8a57e97c29fa8a8c859027ef9e32ecc372b13de68ff8b4819864c7f8/node_modules/preact/hooks/dist/hooks.module.js",
+    "../../core/dist/types.mjs",
+    "../../core/dist/utils/type-utils.mjs",
+    "../../core/dist/utils/user-agent-utils.mjs",
+    "../../core/dist/surveys/validation.mjs",
+    "../../browser-common/dist/types/surveys.mjs",
+    "../../browser-common/dist/utils/globals.mjs",
+    "../../browser-common/dist/utils/logger.mjs",
+    "../../browser-common/dist/utils/general-utils.mjs",
+    "../../core/dist/surveys/events.mjs",
+    "../../core/dist/surveys/translations.mjs",
+    "../../core/dist/surveys/activation.mjs",
+    "../src/utils/survey-utils.ts",
+    "../../core/dist/surveys/keys.mjs",
+    "../../browser-common/dist/utils/uuidv7.mjs",
+    "../../browser-common/dist/utils/regex-utils.mjs",
+    "../../browser-common/dist/utils/property-utils.mjs",
+    "../src/storage.ts",
+    "../../browser-common/dist/utils/stylesheet-loader.mjs",
+    "../src/extensions/surveys/surveys-extension-utils.tsx",
+    "../src/constants.ts",
+    "../../browser-common/dist/utils/url-targeting-utils.mjs",
+    "../../browser-common/dist/utils/matcher-utils.mjs",
+    "../src/extensions/surveys/icons.tsx",
+    "../src/extensions/surveys/components/PostHogLogo.tsx",
+    "../src/extensions/surveys/components/BottomSection.tsx",
+    "../src/extensions/surveys/components/QuestionHeader.tsx",
+    "../src/extensions/surveys/components/ConfirmationMessage.tsx",
+    "../src/extensions/surveys/components/QuestionTypes.tsx",
+    "../src/utils/survey-branching.ts",
+    "../src/utils/survey-translations.ts",
+    "../../browser-common/dist/utils/event-utils.mjs",
+    "../src/extensions/surveys.tsx",
+    "../src/utils/survey-url-prefill.ts",
+    "../src/utils/globals.ts",
+    "../src/entrypoints/surveys.ts",
+    "../../browser-common/dist/utils/globals.mjs",
+    "../src/utils/globals.ts",
+    "../../core/dist/utils/string-utils.mjs",
+    "../../core/dist/utils/type-utils.mjs",
+    "../../core/dist/utils/index.mjs",
+    "../../browser-common/dist/utils/logger.mjs",
+    "../../browser-common/dist/utils/general-utils.mjs",
+    "../../browser-common/dist/constants.mjs",
+    "../../browser-common/dist/utils/element-utils.mjs",
+    "../../browser-common/dist/utils/autocapture-utils.mjs",
+    "../src/autocapture.ts",
+    "../../browser-common/dist/utils/request-utils.mjs",
+    "../../browser-common/dist/utils/type-utils.mjs",
+    "../../browser-common/dist/utils/prototype-utils.mjs",
+    "../../core/dist/utils/browser-utils.mjs",
+    "../src/entrypoints/dead-clicks-autocapture.ts"
+  ]
+}
