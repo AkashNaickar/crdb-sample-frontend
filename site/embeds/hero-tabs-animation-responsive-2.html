@@ -1,0 +1,1053 @@
+<!doctype html>
+<!--
+  Littlebird landing-page hero animation.
+  Self-contained CSS/JS/SVG; brand fonts load as woff2 from ./fonts/ on this origin (three small cached requests; previously base64-embedded).
+
+  RESPONSIVE VARIANT: the tab bar + caption sit OUTSIDE the scaled app-window canvas, so
+  they keep a usable size and stack below the tabs at ≤850px (instead of shrinking with
+  the window). Only the app window (1080×654) is transform-scaled to the iframe WIDTH, so
+  it's always full-width. Because the header adds height ABOVE the window, the embed's
+  total height varies — a fixed-aspect/fixed-height iframe would clip the window's bottom.
+  This file therefore posts its content height to the host page; the host iframe must be
+  allowed to grow to that height.
+
+  EMBEDDING (Webflow): host this file (own origin / S3 / CDN — Webflow's inline HTML embed
+  has a ~50k char limit, so it can't be pasted inline). Two steps:
+
+  1) The iframe — give it class "lb-hero", width 100%, an initial height (the script
+     overrides it), and NO fixed aspect-ratio:
+
+       <iframe class="lb-hero" src="https://…/hero-tabs-animation-responsive.html"
+               title="Littlebird app demo cycling through Recall, Meetings, and Routines"
+               loading="lazy" allowtransparency="true"
+               style="width:100%; height:620px; border:0; background:transparent"></iframe>
+
+  2) Page custom code (Webflow → Page Settings → Custom Code, before </body>) — resize the
+     iframe to the height this file reports:
+
+       <script>
+         window.addEventListener('message', function (e) {
+           if (e.data && e.data.type === 'lb-hero-height') {
+             document.querySelectorAll('iframe.lb-hero').forEach(function (f) {
+               f.style.height = e.data.height + 'px';
+             });
+           }
+         });
+       </script>
+
+  Keep the embed ≥320px wide; the document background is transparent.
+-->
+<html lang="en">
+<head>
+  <link rel="preload" href="fonts/sohne-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/sohne-600.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/meraki-400.woff2" as="font" type="font/woff2" crossorigin>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style id="theme">
+  :root {
+    --bg: hsl(48 50% 98%);
+    --bg-subtle: hsl(48 35% 97%);
+    --surface: hsl(48 30% 98%);
+    --surface-hover: hsl(48 30% 94%);
+    --surface-active: hsl(48 30% 92%);
+    --border: hsl(48 30% 91%);
+    --border-strong: hsl(48 30% 88%);
+    --border-strongest: hsl(48 30% 82%);
+    --fg: #202020;
+    --fg-subtle: #646464;
+    --fg-muted: #838383;
+    --accent: hsl(48 30% 8%);
+    --accent-fg: hsl(48 20% 95%);
+    --green: hsl(140 52% 55%);
+    --pill: #00694e;
+    --blue: hsl(212 90% 77%);
+    --plum: hsl(339 62% 76%);
+    --ease-out: cubic-bezier(.215, .61, .355, 1);
+    --ease-in-out: cubic-bezier(.645, .045, .355, 1);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: transparent; }
+  body {
+    font-family: 'Sohne', -apple-system, 'Segoe UI', sans-serif;
+    color: var(--fg);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .embed { width: 100%; max-width: 1080px; margin: 0 auto; }
+  /* window scales to the iframe WIDTH (always full-width = big). The embed hugs
+     its content height (header + window); the host iframe auto-sizes to match
+     via the postMessage below, so the bottom is never clipped. */
+  .stage { width: 100%; aspect-ratio: 1080 / 654; position: relative; overflow: hidden; }
+  .canvas {
+    position: absolute; top: 0; left: 0;
+    width: 1080px; height: 654px;
+    transform-origin: 0 0;
+  }
+
+  /* ---------- tab bar + captions (laid out outside the scaled canvas) ---------- */
+  .hero-head { display: flex; align-items: center; padding: 2px 2px 18px; }
+  .tabbar {
+    display: flex; gap: 2px; padding: 4px;
+    border-radius: 1.625rem; border: 1px solid rgba(0, 0, 0, .08);
+    background: rgba(0, 0, 0, .05); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  }
+  .tab {
+    position: relative; overflow: hidden;
+    border: 0; background: transparent; font: inherit; cursor: pointer;
+    padding: 8px 18px; border-radius: 999px;
+    font-size: 14.5px; font-weight: 500; color: var(--fg-subtle);
+    transition: color .2s ease, background-color .2s ease;
+  }
+  .tab.current { background: var(--pill); color: #fff; }
+  .tab .fill {
+    position: absolute; inset: 0; pointer-events: none;
+    background: rgba(255, 255, 255, .14);
+    transform-origin: left; transform: scaleX(var(--p, 0));
+  }
+  .tab:not(.current) .fill { display: none; }
+  .captions { position: relative; flex: 1; height: 20px; margin-left: 32px; }
+  .cap {
+    position: absolute; right: 0; top: 0; white-space: nowrap;
+    font-size: 14.5px; color: var(--fg-subtle);
+    opacity: 0; transition: opacity .3s ease;
+  }
+  .cap.show { opacity: 1; }
+
+  /* ≤850px: centered tabs with the caption stacked + centered below them */
+  @media (max-width: 850px) {
+    .hero-head { flex-direction: column; align-items: center; gap: 10px; padding: 4px 2px 6px; }
+    .tab { padding: 8px 16px; font-size: 14px; }
+    .captions { margin-left: 0; width: 100%; height: auto; min-height: 2.7em; }
+    .cap { left: 0; right: 0; max-width: 38ch; margin-inline: auto; text-align: center; white-space: normal; text-wrap: balance; font-size: 14px; line-height: 1.35; }
+  }
+
+  /* ---------- app window ---------- */
+  .window-frame {
+    height: 654px; padding: 6px;
+    border-radius: 26px; border: 1px solid rgba(0, 0, 0, .15);
+    background: rgba(0, 0, 0, .05); backdrop-filter: blur(3px);
+  }
+  .window {
+    height: 100%; display: flex; overflow: hidden;
+    background: var(--surface); border: 1px solid rgba(0, 0, 0, .10); border-radius: 20px;
+  }
+
+  .sidebar {
+    width: 250px; flex: none; display: flex; flex-direction: column;
+    background: var(--bg-subtle); border-right: 1px solid var(--border);
+    padding: 18px 12px 14px; font-size: 13.5px;
+    transition: margin-left .45s var(--ease-in-out), opacity .3s ease;
+  }
+  .window.full .sidebar { margin-left: -251px; opacity: 0; }
+  .logo-row { display: flex; align-items: center; gap: 9px; padding: 0 8px; margin-bottom: 18px; }
+  .logo-row svg { width: 21px; height: 17px; }
+  .wordmark { font-family: 'Meraki', Georgia, serif; font-size: 17px; }
+  .nav {
+    display: flex; align-items: center; gap: 9px;
+    padding: 7px 8px; border-radius: 8px;
+    transition: background-color .2s ease;
+  }
+  .nav .i { color: var(--fg-subtle); }
+  .sidebar[data-active="chat"] [data-nav="chat"],
+  .sidebar[data-active="meetings"] [data-nav="meetings"],
+  .sidebar[data-active="routines"] [data-nav="routines"] { background: var(--surface-active); }
+  .section-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 8px; margin: 16px 0 2px;
+    font-size: 12px; color: var(--fg-muted);
+  }
+  .section-head .i { width: 13px; height: 13px; }
+  .side-row {
+    display: flex; align-items: center; gap: 8px; padding: 5.5px 8px;
+    font-size: 13px; color: var(--fg-subtle);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .side-row .i { width: 14px; height: 14px; flex: none; }
+  .side-footer { margin-top: auto; display: flex; align-items: center; gap: 9px; padding: 8px; }
+  .avatar {
+    width: 26px; height: 26px; border-radius: 50%; flex: none;
+    display: grid; place-items: center;
+    background: var(--plum); color: #fff; font-size: 12px; font-weight: 600;
+  }
+  .user-name { font-size: 13px; line-height: 1.2; }
+  .user-plan { font-size: 11px; color: var(--fg-muted); }
+
+  .stage { flex: 1; position: relative; display: grid; }
+
+  /* ---------- scenes ---------- */
+  .scene {
+    grid-area: 1 / 1; padding: 0 48px; overflow: hidden;
+    opacity: 0; visibility: hidden;
+    transition: opacity .25s var(--ease-out), visibility 0s linear .25s;
+  }
+  .scene.active { opacity: 1; visibility: visible; transition: opacity .25s var(--ease-out); }
+  .col { max-width: 620px; margin: 0 auto; height: 100%; position: relative; }
+
+  [data-reveal] {
+    opacity: 0; transform: translateY(8px);
+    transition: opacity .3s var(--ease-out), transform .3s var(--ease-out);
+  }
+  [data-reveal].in { opacity: 1; transform: none; }
+  .w {
+    opacity: 0; filter: blur(3px);
+    transition: opacity .18s var(--ease-out), filter .18s var(--ease-out);
+  }
+  .w.on { opacity: 1; filter: none; }
+
+  .muted-xs { font-size: 12px; color: var(--fg-muted); }
+  .card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+    padding: 16px; box-shadow: 0 1px 2px rgba(27, 27, 27, .03);
+  }
+  .card-title { font-size: 15px; font-weight: 600; }
+  .page-head { display: flex; align-items: baseline; justify-content: space-between; padding-top: 26px; }
+  .page-head h2 { margin: 0; font-family: 'Meraki', Georgia, serif; font-weight: 400; font-size: 24px; }
+
+  /* composer */
+  .composer-wrap { position: relative; z-index: 2; }
+  .composer {
+    background: var(--surface); border: 1px solid var(--border-strong); border-radius: 18px;
+    padding: 14px 14px 10px; box-shadow: 0 1px 2px rgba(27, 27, 27, .05);
+  }
+  .composer-input { position: relative; min-height: 46px; padding: 2px 4px; font-size: 15px; line-height: 1.45; }
+  .ph { position: absolute; left: 4px; top: 2px; color: var(--fg-muted); transition: opacity .15s ease; }
+  .composer.typing .ph { opacity: 0; }
+  .caret {
+    display: inline-block; width: 1.5px; height: 1.05em; margin-left: 1px;
+    background: var(--fg); vertical-align: -0.15em; opacity: 0;
+  }
+  .composer.typing .caret { opacity: 1; animation: blink 1.1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .composer-bar { display: flex; align-items: center; justify-content: space-between; }
+  .icon-chip {
+    width: 28px; height: 28px; display: grid; place-items: center;
+    border: 1px solid var(--border-strong); border-radius: 8px; color: var(--fg-subtle);
+  }
+  .composer-tools { display: flex; align-items: center; gap: 14px; color: var(--fg-subtle); font-size: 13px; }
+  .mode { display: inline-flex; align-items: center; gap: 3px; }
+  .send {
+    width: 32px; height: 32px; border-radius: 50%;
+    display: grid; place-items: center;
+    background: var(--accent); color: var(--accent-fg);
+    opacity: .45; transition: opacity .2s ease;
+  }
+  .composer.typing .send { opacity: 1; }
+  .send.armed { animation: pop .28s var(--ease-out); }
+  @keyframes pop { 40% { transform: scale(.86); } }
+  .connect {
+    display: flex; align-items: center; justify-content: space-between;
+    margin: 0 6px; padding: 9px 12px;
+    background: var(--surface-hover); border: 1px solid var(--border); border-top: 0;
+    border-radius: 0 0 14px 14px;
+    font-size: 12px; color: var(--fg-subtle);
+  }
+  .connect-icons { display: flex; align-items: center; gap: 7px; }
+  .connect-icons .close { width: 12px; height: 12px; color: var(--fg-muted); margin-left: 4px; }
+
+  .chips-suggest { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .suggest {
+    display: inline-flex; align-items: center; gap: 6px;
+    border: 1px solid var(--border-strong); border-radius: 10px; background: var(--surface);
+    padding: 8px 12px; font-size: 13px;
+  }
+  .suggest .i { width: 13px; height: 13px; }
+
+  /* thread (recall) */
+  .msg-user {
+    margin-left: auto; width: fit-content; max-width: 420px;
+    background: var(--surface-active); border-radius: 14px 14px 4px 14px;
+    padding: 10px 14px; font-size: 14px;
+  }
+  .thinking {
+    width: 120px; height: 12px; margin-top: 24px; border-radius: 6px;
+    background: linear-gradient(90deg, var(--surface-active) 25%, var(--border-strong) 50%, var(--surface-active) 75%);
+    background-size: 200% 100%;
+    animation: sweep 1.2s linear infinite;
+    opacity: 0; transition: opacity .2s ease;
+  }
+  .thinking.in { opacity: 1; }
+  @keyframes sweep { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+  .answer { margin: 18px 0 0; font-size: 15px; line-height: 1.65; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    border: 1px solid var(--border-strong); border-radius: 999px; background: var(--surface-hover);
+    padding: 5px 12px 5px 9px; font-size: 12px; color: var(--fg-subtle);
+    opacity: 0; transform: translateY(6px);
+    transition: opacity .25s var(--ease-out), transform .25s var(--ease-out),
+                box-shadow .25s ease, border-color .25s ease;
+  }
+  .chip.in { opacity: 1; transform: none; }
+  .chip.glow { box-shadow: 0 0 0 3px hsl(140 52% 55% / .2); border-color: hsl(140 40% 65%); }
+  .chip .i { width: 12px; height: 12px; }
+  .chip .brand { width: 12px; height: 12px; }
+
+  /* recall scene */
+  #panel-recall .head { padding-top: 64px; transition: opacity .35s var(--ease-out), transform .35s var(--ease-out); }
+  .greeting { margin: 0; font-family: 'Meraki', Georgia, serif; font-weight: 400; font-size: 27px; }
+  .date { margin: 9px 0 0; font-size: 13px; color: var(--fg-muted); }
+  #panel-recall .composer-wrap { margin-top: 26px; transition: transform .55s var(--ease-in-out); }
+  #panel-recall .extras { transition: opacity .35s var(--ease-out), transform .35s var(--ease-out); }
+  #panel-recall.sent .head,
+  #panel-recall.sent .extras { opacity: 0; transform: translateY(-10px); }
+  #panel-recall.sent .composer-wrap { transform: translateY(324px); }
+  #panel-recall.sent .composer { border-radius: 18px; }
+  #panel-recall .thread { position: absolute; left: 0; right: 0; top: 26px; }
+
+  /* meetings scene */
+  #panel-meetings .col { max-width: 760px; }
+  .beats { display: grid; margin-top: 22px; }
+  .beat { grid-area: 1 / 1; transition: opacity .35s var(--ease-out), transform .35s var(--ease-out); }
+  .beat-2, .beat-gen { opacity: 0; pointer-events: none; }
+  .scene.beat2 .beat-1 { opacity: 0; transform: translateY(-8px); }
+  .scene.beat2 .beat-2 { opacity: 1; }
+  .scene.gen .beat-1 { opacity: 0; transform: translateY(-8px); }
+  .scene.gen .beat-gen { opacity: 1; pointer-events: auto; }
+  .gen-status { display: flex; align-items: center; gap: 9px; font-size: 13.5px; color: var(--fg-subtle); }
+  .spinner { width: 15px; height: 15px; flex: none; border-radius: 50%;
+    border: 2px solid var(--border-strong); border-top-color: var(--fg-subtle); animation: spin .7s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .gen-skel { margin-top: 22px; }
+  .skel { display: block; border-radius: 6px;
+    background: linear-gradient(90deg, var(--surface-active) 25%, var(--border-strong) 50%, var(--surface-active) 75%);
+    background-size: 200% 100%; animation: sweep 1.3s linear infinite; }
+  .sk-label { width: 88px; height: 11px; }
+  .sk-line { height: 13px; margin-top: 11px; }
+  .sk-line.w-lg { width: 94%; } .sk-line.w-md { width: 76%; } .sk-line.w-sm { width: 58%; }
+  .sk-gap { height: 16px; }
+  .m-head { padding-top: 46px; }
+  .m-title { margin: 0; font-family: 'Meraki', Georgia, serif; font-weight: 400; font-size: 28px; }
+  .m-date { margin: 10px 0 0; font-size: 13.5px; color: var(--fg-muted); }
+  .m-toolbar { display: flex; align-items: center; justify-content: space-between; margin-top: 20px; }
+  .seg {
+    display: flex; gap: 2px; padding: 4px;
+    border: 1px solid var(--border-strong); border-radius: 13px; background: var(--surface);
+  }
+  .seg-item {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 7px 13px; border-radius: 9px; font-size: 13.5px;
+    transition: background-color .25s ease;
+  }
+  .seg-item .i { width: 14px; height: 14px; }
+  #panel-meetings:not(.beat2):not(.gen) .seg-item[data-seg="transcript"],
+  #panel-meetings.gen .seg-item[data-seg="summary"],
+  #panel-meetings.beat2 .seg-item[data-seg="summary"] { background: var(--surface-active); }
+  .m-people { display: flex; align-items: center; gap: 8px; }
+  .m-people-name { font-size: 13.5px; }
+  .avatars { display: flex; align-items: center; }
+  .av {
+    width: 24px; height: 24px; border-radius: 50%;
+    display: grid; place-items: center;
+    font-size: 11px; font-weight: 600; color: #fff;
+    border: 2px solid var(--surface);
+  }
+  .av + .av { margin-left: -7px; }
+  .av-blue { background: var(--blue); color: #1d3a5f; }
+  .av-plum { background: var(--plum); }
+  .notes-body { padding-top: 2px; }
+  .card-head { display: flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; }
+  .card-head .i { width: 14px; height: 14px; color: var(--fg-subtle); }
+  .card-head .right { margin-left: auto; font-weight: 400; }
+  .rec-dot { width: 8px; height: 8px; border-radius: 50%; background: #e5484d; flex: none; animation: recpulse 1.4s ease-in-out infinite; }
+  @keyframes recpulse { 0%, 100% { opacity: 1; } 50% { opacity: .3; } }
+  .tx-lines { margin-top: 2px; }
+  .tx-row { display: flex; gap: 12px; margin-top: 12px; font-size: 13.5px; line-height: 1.55; }
+  .tx-spk { flex: none; width: 42px; font-weight: 600; color: var(--fg-subtle); }
+  .tx-text { color: var(--fg); }
+  .notes-label {
+    margin: 0 0 6px; font-size: 11.5px; font-weight: 600;
+    letter-spacing: .04em; text-transform: uppercase; color: var(--fg-muted);
+  }
+  .notes-sec { margin-top: 14px; }
+  .notes-line { margin: 4px 0; font-size: 13.5px; line-height: 1.6; }
+  .ai-row { display: flex; align-items: center; gap: 9px; padding: 5px 0; font-size: 13.5px; }
+  .cb { width: 16px; height: 16px; flex: none; }
+  .cb .box { fill: transparent; stroke: var(--border-strongest); stroke-width: 1.4; transition: fill .2s ease, stroke .2s ease; }
+  .cb .tick {
+    fill: none; stroke: var(--accent-fg); stroke-width: 1.8;
+    stroke-linecap: round; stroke-linejoin: round;
+    stroke-dasharray: 20; stroke-dashoffset: 20;
+    transition: stroke-dashoffset .25s var(--ease-out) .08s;
+  }
+  .ai-row.is-checked .box { fill: var(--accent); stroke: var(--accent); }
+  .ai-row.is-checked .tick { stroke-dashoffset: 0; }
+  .ai-row.is-checked .ai-label { color: var(--fg-muted); }
+  .endnote { margin: 14px 0 0; font-size: 12.5px; color: var(--fg-muted); }
+
+  /* meetings: floating recorder */
+  .recbar {
+    position: absolute; left: 50%; bottom: 18px;
+    transform: translateX(-50%) translateY(16px);
+    opacity: 0; pointer-events: none;
+    transition: opacity .32s var(--ease-out), transform .42s cubic-bezier(.34, 1.56, .64, 1);
+  }
+  .recbar.in { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .recbar-inner {
+    display: flex; align-items: center; gap: 8px; padding: 8px;
+    background: #fffdf4; border: 1px solid rgba(0, 0, 0, .14);
+    border-radius: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, .14);
+  }
+  .wave { display: flex; align-items: center; gap: 3.5px; padding: 0 12px; height: 24px; }
+  .wave i {
+    width: 2.5px; height: 20px; border-radius: 9px; background: var(--green);
+    transform-origin: center; transform: scaleY(.3);
+  }
+  .recbar.in .wave i { animation: rwave 1s var(--ease-in-out) infinite; }
+  .wave i:nth-child(1) { height: 13px; animation-delay: -.20s; animation-duration: .82s; }
+  .wave i:nth-child(2) { height: 22px; animation-delay: -.60s; animation-duration: 1.0s; }
+  .wave i:nth-child(3) { height: 16px; animation-delay: -.40s; animation-duration: .9s; }
+  @keyframes rwave { 0%, 100% { transform: scaleY(.3); } 50% { transform: scaleY(1); } }
+  .recbtn {
+    display: inline-flex; align-items: center; gap: 9px; height: 40px;
+    padding: 0 18px; border-radius: 11px;
+    background: #efece1; color: var(--fg);
+    font-size: 13.5px; font-weight: 500;
+  }
+  .recbtn .sq { width: 12px; height: 12px; border-radius: 3px; background: currentColor; }
+
+  /* routines scene */
+  .clock-chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    border: 1px solid var(--border-strong); border-radius: 999px; padding: 4px 10px;
+    font-size: 12px; color: var(--fg-subtle); font-variant-numeric: tabular-nums;
+  }
+  .clock-chip .i { width: 12px; height: 12px; }
+  .clock-text.tick { display: inline-block; animation: pulse .4s var(--ease-out); }
+  @keyframes pulse { 40% { transform: scale(1.14); } }
+  #panel-routines .col { max-width: 760px; }
+
+  /* routines: morning greeting */
+  .r-greet { padding-top: 46px; }
+  .r-greet-hi { font-family: 'Meraki', Georgia, serif; font-weight: 400; font-size: 28px; }
+  .r-greet-sub { margin-left: 9px; font-size: 13px; color: var(--fg-muted); }
+
+  /* routines: run + brief */
+  .r-run { margin-top: 14px; }
+  .run-head { display: flex; align-items: center; gap: 11px; padding: 13px 15px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 13px; box-shadow: 0 1px 2px rgba(27,27,27,.03); }
+  .run-badge { width: 34px; height: 34px; flex: none; display: grid; place-items: center;
+    background: var(--surface-hover); border: 1px solid var(--border); border-radius: 9px; color: var(--fg-subtle); }
+  .run-badge .i { width: 16px; height: 16px; }
+  .run-name { font-size: 14px; font-weight: 600; }
+  .run-sched { margin-top: 2px; font-size: 12px; color: var(--fg-muted); }
+  .run-right { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+  .run-status { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px;
+    background: rgba(0,105,78,.09); color: var(--pill); font-size: 12px; font-weight: 600; }
+  .run-status .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--pill); animation: recpulse 1.1s ease-in-out infinite; }
+  .run-status .done-i { display: none; width: 12px; height: 12px; stroke-width: 2.3; }
+  .run-status.done .dot { display: none; }
+  .run-status.done .done-i { display: block; }
+  .tool-list { margin-top: 12px; }
+  .tool-row { display: flex; align-items: center; gap: 11px; padding: 9px 4px; font-size: 13px; border-bottom: 1px solid var(--border); }
+  .tool-ic { width: 24px; height: 24px; flex: none; display: grid; place-items: center;
+    border: 1px solid var(--border); border-radius: 7px; background: var(--surface); }
+  .tool-ic .brand { width: 14px; height: 14px; }
+  .tool-ic img.brand { display: block; object-fit: contain; }
+  .tool-label { color: var(--fg); }
+  .tool-state { margin-left: auto; display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--fg-muted); }
+  .tool-state .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--fg-muted); animation: recpulse 1.1s ease-in-out infinite; }
+  .tool-state .done-i { display: none; width: 13px; height: 13px; stroke-width: 2.3; color: var(--pill); }
+  .tool-row.is-checked .tool-state { color: var(--pill); }
+  .tool-row.is-checked .tool-state .dot { display: none; }
+  .tool-row.is-checked .tool-state .done-i { display: block; }
+  .r-brief { margin-top: 18px; }
+  .r-brief-title { font-size: 13px; font-weight: 600; }
+  .r-brief-date { margin-top: 2px; font-size: 12px; color: var(--fg-muted); }
+  .r-brief-line { display: flex; gap: 9px; margin-top: 11px; font-size: 13px; line-height: 1.5; }
+  .r-brief-line .n { flex: none; color: var(--fg-muted); font-variant-numeric: tabular-nums; }
+  .r-brief-end { margin-top: 14px; font-size: 12px; color: var(--fg-muted); }
+
+  /* icons */
+  .i {
+    width: 16px; height: 16px;
+    fill: none; stroke: currentColor; stroke-width: 1.75;
+    stroke-linecap: round; stroke-linejoin: round;
+  }
+  .i-sm { width: 13px; height: 13px; }
+  .i.fill { fill: currentColor; stroke: none; }
+  .brand { width: 14px; height: 14px; }
+
+  .notransition, .notransition * { transition: none !important; animation: none !important; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .canvas * { transition: none !important; animation: none !important; }
+    .scene { transition: opacity .2s ease !important; }
+    .caret { opacity: 0 !important; }
+  }
+</style>
+</head>
+<body>
+
+<svg style="display:none" aria-hidden="true"><defs>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.3 0-2.6-.3-3.7-.8L3 21l1.8-5.8A8.5 8.5 0 1 1 21 11.5Z"/></symbol>
+  <symbol id="i-notes" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5Z"/><path d="M14.5 2v5.5H20"/><path d="M8.5 13h7M8.5 17h5"/></symbol>
+  <symbol id="i-loop" viewBox="0 0 24 24"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></symbol>
+  <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3.5 6.5v12a1.5 1.5 0 0 0 1.5 1.5h14a1.5 1.5 0 0 0 1.5-1.5V8.8a1.5 1.5 0 0 0-1.5-1.5h-7l-2-2.3H5a1.5 1.5 0 0 0-1.5 1.5Z"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="2.5" width="6" height="11.5" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3.5"/></symbol>
+  <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 19V5"/><path d="m5.5 11.5 6.5-6.5 6.5 6.5"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="16" rx="2.5"/><path d="M8 2.5V7M16 2.5V7M3.5 10.5h17"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5Z"/><path d="M14.5 2v5.5H20"/></symbol>
+  <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 2c.9 6 4 9.1 10 10-6 .9-9.1 4-10 10-.9-6-4-9.1-10-10 6-.9 9.1-4 10-10Z"/></symbol>
+  <symbol id="i-edit" viewBox="0 0 24 24"><path d="M17 3.5a2.1 2.1 0 0 1 3 3L8.5 18l-4 1 1-4Z"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="M21 3 10.5 13.5"/><path d="M21 3 14 21l-3.5-7.5L3 10Z"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M17 7 7 17M7 7l10 10"/></symbol>
+  <symbol id="i-transcript" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M7 10h6M7 14h10"/></symbol>
+  <symbol id="i-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="m8.5 12.2 2.4 2.4 4.6-5"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 13 5 5L20 7"/></symbol>
+
+  <symbol id="b-gmail" viewBox="0 0 256 193">
+    <path fill="#4285F4" d="M58.2 192.1V93.1L27.5 65.1 0 49.5v125.1c0 9.6 7.8 17.5 17.5 17.5z"/>
+    <path fill="#34A853" d="M197.8 192.1h40.7c9.7 0 17.5-7.9 17.5-17.5V49.5l-31.2 17.8-27 25.8z"/>
+    <path fill="#EA4335" d="m58.2 93.1-4.2-38.6 4.2-37 69.8 52.3L197.8 17.5l4.7 35-4.7 40.6L128 145.5z"/>
+    <path fill="#FBBC04" d="M197.8 17.5v75.6L256 49.5V26.2c0-21.6-24.6-33.9-41.9-21z"/>
+    <path fill="#C5221F" d="m0 49.5 26.8 20 31.4 23.6V17.5h-40.7C7.8 17.5 0 25.3 0 35z"/>
+  </symbol>
+  <symbol id="b-slack" viewBox="0 0 24 24">
+    <path fill="#36C5F0" d="M8.83 5.04a2.52 2.52 0 1 1 2.52-2.52v2.52zM8.83 6.31a2.52 2.52 0 0 1 0 5.04H2.52a2.52 2.52 0 1 1 0-5.04z"/>
+    <path fill="#2EB67D" d="M18.96 8.83a2.52 2.52 0 1 1 2.52 2.52h-2.52zM17.69 8.83a2.52 2.52 0 0 1-5.04 0V2.52a2.52 2.52 0 1 1 5.04 0z"/>
+    <path fill="#ECB22E" d="M15.16 18.96a2.52 2.52 0 1 1-2.52 2.52v-2.52zM15.16 17.69a2.52 2.52 0 0 1 0-5.04h6.32a2.52 2.52 0 1 1 0 5.04z"/>
+    <path fill="#E01E5A" d="M5.04 15.16a2.52 2.52 0 1 1-2.52-2.52h2.52zM6.31 15.16a2.52 2.52 0 0 1 5.04 0v6.32a2.52 2.52 0 1 1-5.04 0z"/>
+  </symbol>
+  <symbol id="b-docs" viewBox="0 0 24 24">
+    <path fill="#4285F4" d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/>
+    <path fill="#A1C2FA" d="M14 2v5h5z"/>
+    <path stroke="#fff" stroke-width="1.5" stroke-linecap="round" d="M8.5 12.5h7M8.5 15.5h7M8.5 18.5h4.5"/>
+  </symbol>
+  <symbol id="b-cal" viewBox="0 0 24 24">
+    <rect x="2" y="2" width="20" height="20" rx="4" fill="#4285F4"/>
+    <rect x="6.5" y="6.5" width="11" height="11" rx="1" fill="#fff"/>
+    <path fill="#4285F4" d="M11 9.6l1.7-1.1h.4v7h-1.3v-5.2l-.8.5z"/>
+  </symbol>
+  <symbol id="b-drive" viewBox="0 0 24 24">
+    <path fill="#FFCF63" d="M15.7 2H8.3l7.3 12.7H23z"/>
+    <path fill="#11A861" d="M1 14.7 4.7 21 12 8.3 8.3 2z"/>
+    <path fill="#4688F4" d="M4.7 21h14.6l3.7-6.3H8.4z"/>
+  </symbol>
+  <symbol id="b-notion" viewBox="0 0 24 24">
+    <rect x="2.7" y="2.7" width="18.6" height="18.6" rx="3" fill="#fff" stroke="#37352F" stroke-width="1.4"/>
+    <path fill="#37352F" d="M8 17V7.5l1.8-.1 4.6 7V7.5H16V17l-1.8.1-4.7-7.2V17z"/>
+  </symbol>
+  <symbol id="b-linear" viewBox="0 0 24 24">
+    <rect x="2" y="2" width="20" height="20" rx="10" fill="#5E6AD2"/>
+    <path stroke="#fff" stroke-width="1.5" stroke-linecap="round" d="M5.5 13.5 10.5 18.5M5.8 9.8l8.4 8.4M8.5 6.8l8.7 8.7"/>
+  </symbol>
+</defs></svg>
+
+<div class="embed">
+
+    <div class="hero-head">
+      <div class="tabbar" role="tablist" aria-label="Product capabilities">
+        <button class="tab current" id="tab-recall" role="tab" aria-selected="true" aria-controls="panel-recall">Recall<span class="fill"></span></button>
+        <button class="tab" id="tab-meetings" role="tab" aria-selected="false" aria-controls="panel-meetings" tabindex="-1">Meetings<span class="fill"></span></button>
+        <button class="tab" id="tab-routines" role="tab" aria-selected="false" aria-controls="panel-routines" tabindex="-1">Routines<span class="fill"></span></button>
+      </div>
+      <div class="captions" aria-hidden="true">
+        <span class="cap show" data-cap="recall">Ask in plain language. It remembers what you've seen, when you've seen it.</span>
+        <span class="cap" data-cap="meetings">Walk into every call prepared, and leave with your notes already written.</span>
+        <span class="cap" data-cap="routines">A morning briefing, a weekly project update - right to you.</span>
+      </div>
+    </div>
+
+  <div class="stage">
+  <div class="canvas">
+    <div class="window-frame">
+    <div class="window">
+      <aside class="sidebar" data-active="chat" aria-hidden="true">
+        <div class="logo-row">
+          <svg viewBox="0 0 37 30" fill="none"><path fill="var(--fg)" d="M35.9022 8.02614C35.4405 7.84589 33.556 8.08094 32.9562 8.14728C31.732 8.28571 28.8665 8.94761 27.8437 8.53518C27.3503 8.33618 26.8785 7.93818 26.3678 7.7262C24.8818 7.11478 23.1268 7.34839 21.8969 8.39819C20.5303 9.5648 20.3361 11.5 19.0012 12.6868L19.8528 10.6377C19.8643 10.43 18.9594 9.22159 18.771 8.97645C17.3483 7.1292 15.4078 5.24879 13.5722 3.8255C13.3823 3.67841 12.5451 3.00209 12.384 3.01507C12.3063 3.02517 12.2473 3.06554 12.2128 3.13476C12.0589 3.43326 12.1064 4.84069 12.2718 5.14207C13.6283 6.49182 14.8928 7.93097 16.0465 9.46241L15.8465 9.34849C12.3739 5.86165 8.04833 2.87664 3.40481 1.23127C2.83948 1.03227 1.26718 0.455459 0.745003 0.611198C0.455862 0.697721 0.572382 1.52401 0.606907 1.76483C1.01976 4.55661 3.78602 5.4175 5.87474 6.67207L2.18208 5.60641C2.04254 8.5597 5.085 9.79408 7.40963 10.4992C7.40388 10.5685 7.4571 10.6218 7.33627 10.6016C6.4559 10.4516 5.57553 10.3074 4.68077 10.2685C4.65776 10.841 4.99437 11.4409 5.3166 11.898C6.32068 13.3285 8.07566 13.6933 9.68104 14.0106L7.51896 14.2096C7.44415 14.2601 7.49738 14.2932 7.50169 14.3423C7.55204 14.8138 8.29 15.5968 8.66257 15.8751C10.2521 17.0605 12.2085 16.811 14.0556 16.6005C14.0383 16.7115 13.9318 16.6913 13.8628 16.7216C13.0184 17.0749 12.0445 17.1946 11.1584 17.408C10.9958 17.6359 12.2171 18.2992 12.3883 18.3771C13.0817 18.6943 13.6887 18.8155 14.4253 18.9625C14.4957 18.977 14.5259 18.9207 14.5116 19.0476C13.1996 21.078 11.8474 23.0824 10.7297 25.234C10.3025 26.0574 9.72563 27.1144 9.48253 27.9969C9.38902 28.3343 9.179 29.0453 9.39334 29.3394C9.79756 29.6408 10.2881 29.09 10.5628 28.803C11.6403 27.6796 12.5063 26.2001 13.5176 25.0047L11.6144 28.3156C11.5612 28.4958 12.0718 28.3689 12.1567 28.3444C13.6384 27.9205 14.8654 25.2844 15.7616 24.1106C19.2097 23.965 22.4536 22.9079 24.5006 19.9561C26.5131 17.0547 26.2455 12.8108 29.0866 10.5007C30.0763 9.69458 33.0367 8.93174 34.34 8.62747C34.6594 8.55393 35.7771 8.42415 35.9497 8.31599C36.0015 8.28427 36.0144 8.21072 36.0375 8.15737C36.0562 8.05354 35.9713 8.04922 35.9022 8.02326V8.02614ZM25.6039 10.717C24.6301 10.8886 24.41 9.47395 25.2918 9.30379C26.2326 9.12065 26.503 10.5598 25.6039 10.717Z"/></svg>
+          <span class="wordmark">Littlebird</span>
+        </div>
+        <div class="nav" data-nav="chat"><svg class="i i-sm"><use href="#i-chat"/></svg>New Chat</div>
+        <div class="nav" data-nav="search"><svg class="i i-sm"><use href="#i-search"/></svg>Search</div>
+        <div class="nav" data-nav="meetings"><svg class="i i-sm"><use href="#i-notes"/></svg>Meeting Notes</div>
+        <div class="nav" data-nav="routines"><svg class="i i-sm"><use href="#i-loop"/></svg>Routines</div>
+        <div class="section-head">Projects<svg class="i"><use href="#i-plus"/></svg></div>
+        <div class="side-row"><svg class="i"><use href="#i-folder"/></svg>Art Studio</div>
+        <div class="side-row"><svg class="i"><use href="#i-folder"/></svg>Work</div>
+        <div class="side-row"><svg class="i"><use href="#i-folder"/></svg>Home</div>
+        <div class="section-head">Recents</div>
+        <div class="side-row">Tasks to Enhance the Website</div>
+        <div class="side-row">Team Collaboration</div>
+        <div class="side-row">Base Search Payment Details</div>
+        <div class="side-row">Priorities for Website</div>
+        <div class="side-row">Exploring concepts</div>
+        <div class="side-row">Discussing role</div>
+        <div class="side-row">Design system feedback</div>
+        <div class="side-footer">
+          <span class="avatar">S</span>
+          <span><div class="user-name">Stacey</div><div class="user-plan">Pro</div></span>
+        </div>
+      </aside>
+
+      <main class="stage">
+
+        <!-- ============ RECALL ============ -->
+        <section class="scene active" id="panel-recall" role="tabpanel" aria-labelledby="tab-recall">
+          <div class="col" aria-hidden="true">
+            <div class="head">
+              <h1 class="greeting">What are we exploring today?</h1>
+              <p class="date">Monday, June 8</p>
+            </div>
+            <div class="composer-wrap">
+              <div class="composer">
+                <div class="composer-input"><span class="ph">Ask Littlebird</span><span class="typed" data-type data-text="What did Sarah need from me?"></span><span class="caret"></span></div>
+                <div class="composer-bar">
+                  <span class="icon-chip"><svg class="i i-sm"><use href="#i-plus"/></svg></span>
+                  <span class="composer-tools">
+                    <span class="mode">Mode<svg class="i i-sm"><use href="#i-chevron"/></svg></span>
+                    <svg class="i"><use href="#i-mic"/></svg>
+                    <span class="send"><svg class="i i-sm"><use href="#i-arrow-up"/></svg></span>
+                  </span>
+                </div>
+              </div>
+              <div class="connect extras">
+                <span>Connect your apps to get better answers</span>
+                <span class="connect-icons">
+                  <svg class="brand"><use href="#b-gmail"/></svg>
+                  <svg class="brand"><use href="#b-cal"/></svg>
+                  <svg class="brand"><use href="#b-drive"/></svg>
+                  <svg class="brand"><use href="#b-slack"/></svg>
+                  <svg class="brand"><use href="#b-notion"/></svg>
+                  <svg class="brand"><use href="#b-linear"/></svg>
+                  <svg class="i close"><use href="#i-x"/></svg>
+                </span>
+              </div>
+            </div>
+            <div class="chips-suggest extras">
+              <span class="suggest">Suggest micro-interactions for our referral program</span>
+              <span class="suggest">Research AI notetaking tools for our team</span>
+              <span class="suggest">What tasks should I wrap up before the day ends?</span>
+              <span class="suggest"><svg class="i fill"><use href="#i-sparkle"/></svg>More suggestions</span>
+            </div>
+            <div class="thread">
+              <div class="msg-user" data-reveal>What did Sarah need from me?</div>
+              <div class="thinking"></div>
+              <p class="answer" data-stream>Sarah asked for the revised pricing deck and the Q3 timeline before Friday. She also wants the updated rollout dates included.</p>
+              <div class="chips">
+                <span class="chip"><svg class="i"><use href="#i-mic"/></svg>Pricing sync with Sarah</span>
+                <span class="chip"><svg class="brand"><use href="#b-docs"/></svg>Q3 Pricing doc</span>
+                <span class="chip"><svg class="brand"><use href="#b-slack"/></svg>#pricing thread</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ MEETINGS ============ -->
+        <section class="scene" id="panel-meetings" role="tabpanel" aria-labelledby="tab-meetings">
+          <div class="col" aria-hidden="true">
+            <div class="m-head" data-reveal>
+              <h1 class="m-title">Pricing sync with Sarah</h1>
+              <p class="m-date">Today · 10:00 AM</p>
+            </div>
+            <div class="m-toolbar" data-reveal>
+              <div class="seg">
+                <span class="seg-item" data-seg="note"><svg class="i"><use href="#i-edit"/></svg>Note</span>
+                <span class="seg-item" data-seg="summary"><svg class="i fill"><use href="#i-sparkle"/></svg>Summary</span>
+                <span class="seg-item" data-seg="transcript"><svg class="i"><use href="#i-transcript"/></svg>Transcript</span>
+              </div>
+              <div class="m-people">
+                <span class="avatars"><span class="av av-blue">S</span><span class="av av-plum">M</span></span>
+                <span class="m-people-name">Sarah</span>
+                <span class="muted-xs">+2</span>
+              </div>
+            </div>
+            <div class="recbar" aria-hidden="true">
+              <div class="recbar-inner">
+                <span class="wave"><i></i><i></i><i></i></span>
+                <span class="recbtn"><span class="sq"></span>Stop</span>
+              </div>
+            </div>
+            <div class="beats">
+              <div class="beat beat-1">
+                <div class="card live-card" data-reveal>
+                  <div class="card-head"><span class="rec-dot"></span>Live transcript<span class="right muted-xs">Recording · 12:04</span></div>
+                  <div class="tx-lines">
+                    <div class="tx-row" data-reveal><span class="tx-spk">Sarah</span><span class="tx-text" data-stream>I'm still not sold on annual pricing — can we revisit it?</span></div>
+                    <div class="tx-row" data-reveal><span class="tx-spk">You</span><span class="tx-text" data-stream>I'll bring the revised deck and Q3 timeline to Friday's review.</span></div>
+                    <div class="tx-row" data-reveal><span class="tx-spk">Mia</span><span class="tx-text" data-stream>Finance needs the discount tiers before they can sign off.</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="beat beat-gen">
+                <div class="gen-status">
+                  <span class="spinner"></span>
+                  <span class="gen-text" data-from="Analyzing transcript…">Analyzing transcript…</span>
+                </div>
+                <div class="gen-skel">
+                  <span class="skel sk-label"></span>
+                  <span class="skel sk-line w-lg"></span>
+                  <span class="skel sk-line w-md"></span>
+                  <div class="sk-gap"></div>
+                  <span class="skel sk-label"></span>
+                  <span class="skel sk-line w-md"></span>
+                  <span class="skel sk-line w-sm"></span>
+                </div>
+              </div>
+              <div class="beat beat-2">
+                <div class="notes-body">
+                  <div class="notes-sec" data-reveal>
+                    <div class="notes-label">Summary</div>
+                    <p class="notes-line" data-stream>Sarah aligned on the revised deck; annual pricing still open.</p>
+                    <p class="notes-line" data-stream>Q3 rollout dates confirmed for Friday's review.</p>
+                  </div>
+                  <div class="notes-sec" data-reveal>
+                    <div class="notes-label">Action items</div>
+                    <div class="ai-row"><svg class="cb" viewBox="0 0 16 16"><rect class="box" x="1.5" y="1.5" width="13" height="13" rx="4.5"/><path class="tick" d="M4.8 8.4l2.3 2.3 4.3-4.9" pathLength="20"/></svg><span class="ai-label">Send revised pricing deck</span></div>
+                    <div class="ai-row"><svg class="cb" viewBox="0 0 16 16"><rect class="box" x="1.5" y="1.5" width="13" height="13" rx="4.5"/><path class="tick" d="M4.8 8.4l2.3 2.3 4.3-4.9" pathLength="20"/></svg><span class="ai-label">Share Q3 timeline before Friday</span></div>
+                    <div class="ai-row"><svg class="cb" viewBox="0 0 16 16"><rect class="box" x="1.5" y="1.5" width="13" height="13" rx="4.5"/><path class="tick" d="M4.8 8.4l2.3 2.3 4.3-4.9" pathLength="20"/></svg><span class="ai-label">Loop in finance on annual discount</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ ROUTINES ============ -->
+        <section class="scene" id="panel-routines" role="tabpanel" aria-labelledby="tab-routines">
+          <div class="col" aria-hidden="true">
+            <!-- morning greeting -->
+            <div class="r-greet" data-reveal>
+              <span class="r-greet-hi">Good morning</span>
+              <span class="r-greet-sub">— while you slept</span>
+            </div>
+
+            <!-- run + brief -->
+            <div class="r-run">
+              <div class="run-head" data-reveal>
+                <span class="run-badge"><svg class="i"><use href="#i-loop"/></svg></span>
+                <span>
+                  <div class="run-name">Morning Brief</div>
+                  <div class="run-sched">Weekdays · 7:00 AM</div>
+                </span>
+                <span class="run-right">
+                  <span class="run-status"><span class="dot"></span><svg class="i done-i"><use href="#i-check"/></svg><span class="run-status-text" data-from="Running">Running</span></span>
+                  <span class="clock-chip"><svg class="i"><use href="#i-clock"/></svg><span class="clock-text" data-from="6:59 AM" data-to="7:00 AM">6:59 AM</span></span>
+                </span>
+              </div>
+              <div class="tool-list">
+                <div class="tool-row" data-reveal><span class="tool-ic"><img class="brand" alt="" src="data:image/png;base64,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"></span><span class="tool-label">Read today's 3 meetings</span><span class="tool-state"><span class="dot"></span><svg class="i done-i"><use href="#i-check"/></svg></span></div>
+                <div class="tool-row" data-reveal><span class="tool-ic"><svg class="brand"><use href="#b-gmail"/></svg></span><span class="tool-label">Scanned overnight email</span><span class="tool-state"><span class="dot"></span><svg class="i done-i"><use href="#i-check"/></svg></span></div>
+                <div class="tool-row" data-reveal><span class="tool-ic"><svg class="brand"><use href="#b-slack"/></svg></span><span class="tool-label">Caught up on #pricing</span><span class="tool-state"><span class="dot"></span><svg class="i done-i"><use href="#i-check"/></svg></span></div>
+              </div>
+              <div class="r-brief">
+                <div class="r-brief-title" data-reveal>Morning Briefing</div>
+                <div class="r-brief-date" data-reveal>June 12, 2026 · 7:00 AM</div>
+                <div class="r-brief-line" data-reveal><span class="n">1.</span><span data-stream>Pricing sync with Sarah at 10:00 — she pushed back on annual pricing last call.</span></div>
+                <div class="r-brief-line" data-reveal><span class="n">2.</span><span data-stream>Pricing deck and Q3 timeline are both due for Friday's review.</span></div>
+                <div class="r-brief-line" data-reveal><span class="n">3.</span><span data-stream>Mia replied on annual discounts overnight — confirm tiers with finance.</span></div>
+                <div class="r-brief-end" data-reveal>Next run tomorrow, 7:00 AM</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+      </main>
+    </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<script nonce="MTgxODU5OTQyMSw3NTM2NTE1NDk=">
+(() => {
+  'use strict';
+  const ORDER = ['recall', 'meetings', 'routines'];
+  const NAV = { recall: 'chat', meetings: 'meetings', routines: 'routines' };
+  const reduceMq = matchMedia('(prefers-reduced-motion: reduce)');
+
+  const panels = {}, tabs = {}, caps = {};
+  ORDER.forEach(k => {
+    panels[k] = document.getElementById('panel-' + k);
+    tabs[k] = document.getElementById('tab-' + k);
+    caps[k] = document.querySelector(`.cap[data-cap="${k}"]`);
+  });
+  const sidebar = document.querySelector('.sidebar');
+  const windowEl = document.querySelector('.window');
+  const canvas = document.querySelector('.canvas');
+
+  document.querySelectorAll('[data-stream]').forEach(el => {
+    const words = el.textContent.trim().split(/\s+/);
+    el.textContent = '';
+    el._words = words.map(word => {
+      const span = document.createElement('span');
+      span.className = 'w';
+      span.textContent = word + ' ';
+      el.appendChild(span);
+      return span;
+    });
+    el._on = 0;
+  });
+  document.querySelectorAll('[data-type]').forEach(el => { el._n = 0; });
+
+  const q = (key, sel) => panels[key].querySelector(sel);
+  const cls = (key, sel, c, on = true) => q(key, sel).classList.toggle(c, on);
+  const clsN = (key, sel, idx, c, on = true) => panels[key].querySelectorAll(sel)[idx].classList.toggle(c, on);
+
+  function typeTo(key, sel) {
+    const el = q(key, sel);
+    const full = el.dataset.text;
+    return p => {
+      // slight nonlinearity so the typing cadence reads human, monotonic via _n
+      const jitter = 0.4 * Math.sin(p * 29) * p * (1 - p);
+      let count = Math.floor(Math.min(1, Math.max(0, p + jitter)) * full.length);
+      if (p >= 1) count = full.length;
+      el._n = Math.max(el._n, count);
+      el.textContent = full.slice(0, el._n);
+    };
+  }
+
+  function streamTo(key, sel, idx = 0) {
+    const el = panels[key].querySelectorAll(sel)[idx];
+    return p => {
+      const count = p >= 1 ? el._words.length : Math.floor(p * el._words.length);
+      for (let i = el._on; i < count; i++) el._words[i].classList.add('on');
+      el._on = Math.max(el._on, count);
+    };
+  }
+
+  function clearTyped(key, sel) {
+    const el = q(key, sel);
+    el._n = 0;
+    el.textContent = '';
+  }
+
+  // global speed multiplier — timeline literals below are authored at 1.0
+  const TEMPO = 0.6;
+  const s = (at, fn) => ({ at: at * TEMPO, fn });
+  const sp = (at, dur, update) => ({ at: at * TEMPO, dur: dur * TEMPO, update });
+
+  const timelines = {
+    recall: { dur: 7400, steps: [
+      s(300, () => cls('recall', '.composer', 'typing')),
+      sp(500, 1100, typeTo('recall', '[data-type]')),
+      s(1750, () => cls('recall', '.send', 'armed')),
+      s(2000, () => panels.recall.classList.add('sent')),
+      s(2300, () => {
+        clearTyped('recall', '[data-type]');
+        cls('recall', '.composer', 'typing', false);
+        cls('recall', '.send', 'armed', false);
+      }),
+      s(2400, () => cls('recall', '.msg-user', 'in')),
+      s(2700, () => cls('recall', '.thinking', 'in')),
+      s(3150, () => cls('recall', '.thinking', 'in', false)),
+      sp(3250, 2200, streamTo('recall', '.answer')),
+      s(5600, () => cls('recall', '.chips .chip:nth-child(1)', 'in')),
+      s(5720, () => cls('recall', '.chips .chip:nth-child(2)', 'in')),
+      s(5840, () => cls('recall', '.chips .chip:nth-child(3)', 'in')),
+    ]},
+    meetings: { dur: 11350, steps: [
+      s(300, () => cls('meetings', '.m-head', 'in')),
+      s(600, () => cls('meetings', '.m-toolbar', 'in')),
+      s(850, () => cls('meetings', '.recbar', 'in')),
+      s(1000, () => cls('meetings', '.live-card', 'in')),
+      s(1200, () => clsN('meetings', '.tx-row', 0, 'in')),
+      sp(1200, 800, streamTo('meetings', '.tx-row:nth-child(1) .tx-text')),
+      s(2100, () => clsN('meetings', '.tx-row', 1, 'in')),
+      sp(2100, 850, streamTo('meetings', '.tx-row:nth-child(2) .tx-text')),
+      s(3100, () => clsN('meetings', '.tx-row', 2, 'in')),
+      sp(3100, 800, streamTo('meetings', '.tx-row:nth-child(3) .tx-text')),
+      s(4100, () => cls('meetings', '.recbar', 'in', false)),
+      s(4250, () => panels.meetings.classList.add('gen')),
+      s(5150, () => { q('meetings', '.gen-text').textContent = 'Gathering context…'; }),
+      s(6050, () => { panels.meetings.classList.remove('gen'); panels.meetings.classList.add('beat2'); }),
+      s(6350, () => clsN('meetings', '.notes-sec', 0, 'in')),
+      sp(6550, 1000, streamTo('meetings', '.notes-line', 0)),
+      sp(7650, 900, streamTo('meetings', '.notes-line', 1)),
+      s(8750, () => clsN('meetings', '.notes-sec', 1, 'in')),
+      s(9150, () => clsN('meetings', '.ai-row', 0, 'is-checked')),
+      s(9550, () => clsN('meetings', '.ai-row', 1, 'is-checked')),
+      s(9950, () => clsN('meetings', '.ai-row', 2, 'is-checked')),
+    ]},
+    routines: { dur: 6800, steps: [
+      s(250, () => cls('routines', '.r-greet', 'in')),
+      s(750, () => cls('routines', '.run-head', 'in')),
+      s(1050, () => {
+        const c = q('routines', '.clock-text');
+        c.textContent = c.dataset.to;
+        c.classList.add('tick');
+      }),
+      // apps come in one by one, fast
+      s(1300, () => clsN('routines', '.tool-row', 0, 'in')),
+      s(1440, () => clsN('routines', '.tool-row', 1, 'in')),
+      s(1580, () => clsN('routines', '.tool-row', 2, 'in')),
+      // then each completes
+      s(1900, () => clsN('routines', '.tool-row', 0, 'is-checked')),
+      s(2100, () => clsN('routines', '.tool-row', 1, 'is-checked')),
+      s(2300, () => clsN('routines', '.tool-row', 2, 'is-checked')),
+      s(2600, () => {
+        cls('routines', '.run-status', 'done');
+        q('routines', '.run-status-text').textContent = 'Done';
+      }),
+      s(3000, () => clsN('routines', '.r-brief-title', 0, 'in')),
+      s(3100, () => cls('routines', '.r-brief-date', 'in')),
+      s(3350, () => clsN('routines', '.r-brief-line', 0, 'in')),
+      sp(3450, 600, streamTo('routines', '.r-brief-line [data-stream]', 0)),
+      s(3850, () => clsN('routines', '.r-brief-line', 1, 'in')),
+      sp(3950, 600, streamTo('routines', '.r-brief-line [data-stream]', 1)),
+      s(4350, () => clsN('routines', '.r-brief-line', 2, 'in')),
+      sp(4450, 600, streamTo('routines', '.r-brief-line [data-stream]', 2)),
+      s(4950, () => cls('routines', '.r-brief-end', 'in')),
+    ]},
+  };
+  Object.values(timelines).forEach(tl => {
+    tl.dur *= TEMPO;
+    tl.steps.sort((a, b) => a.at - b.at);
+  });
+
+  function resetScene(key) {
+    const panel = panels[key];
+    panel.classList.remove('sent', 'beat2', 'run', 'gen');
+    panel.querySelectorAll('.in, .is-checked, .glow, .armed, .typing, .go, .tap, .picked, .done').forEach(el =>
+      el.classList.remove('in', 'is-checked', 'glow', 'armed', 'typing', 'go', 'tap', 'picked', 'done'));
+    panel.querySelectorAll('[data-stream]').forEach(el => {
+      el._on = 0;
+      el._words.forEach(w => w.classList.remove('on'));
+    });
+    panel.querySelectorAll('[data-type]').forEach(el => { el._n = 0; el.textContent = ''; });
+    panel.querySelectorAll('[data-from]').forEach(el => {
+      el.textContent = el.dataset.from;
+      el.classList.remove('tick');
+    });
+  }
+
+  let cur = null;
+  let elapsed = 0, stepIdx = 0, activeSpans = [];
+  let last = performance.now();
+  let hiddenPause = false, apiPause = false;
+  const isPaused = () => hiddenPause || apiPause;
+
+  function finishScene(key) {
+    const panel = panels[key];
+    panel.classList.add('notransition');
+    timelines[key].steps.forEach(step => step.fn ? step.fn() : step.update(1));
+    void panel.offsetWidth;
+    panel.classList.remove('notransition');
+  }
+
+  function activate(key, { instant = false, force = false } = {}) {
+    if (key === cur && !force) return;
+    const prev = cur;
+    cur = key;
+    ORDER.forEach(k => {
+      const current = k === key;
+      tabs[k].setAttribute('aria-selected', current);
+      tabs[k].classList.toggle('current', current);
+      tabs[k].tabIndex = current ? 0 : -1;
+      tabs[k].style.setProperty('--p', 0);
+      caps[k].classList.toggle('show', current);
+    });
+    sidebar.dataset.active = NAV[key];
+    windowEl.classList.toggle('full', key !== 'recall');
+    if (prev && prev !== key) {
+      const prevPanel = panels[prev];
+      prevPanel.classList.remove('active');
+      setTimeout(() => resetScene(prev), 300);
+    }
+    resetScene(key);
+    const panel = panels[key];
+    if (instant) panel.classList.add('notransition');
+    panel.classList.add('active');
+    if (instant) { void panel.offsetWidth; panel.classList.remove('notransition'); }
+    elapsed = 0; stepIdx = 0; activeSpans = [];
+    if (reduceMq.matches) finishScene(key);
+  }
+
+  function frame(now) {
+    const dt = Math.min(now - last, 64);
+    last = now;
+    if (cur && !isPaused()) {
+      const tl = timelines[cur];
+      const dur = reduceMq.matches ? 7000 : tl.dur;
+      elapsed += dt;
+      if (!reduceMq.matches) {
+        while (stepIdx < tl.steps.length && tl.steps[stepIdx].at <= elapsed) {
+          const step = tl.steps[stepIdx++];
+          // a thrown step must not kill the rAF loop and freeze the whole demo
+          try { if (step.fn) step.fn(); else activeSpans.push(step); } catch (err) { console.error(err); }
+        }
+        for (let i = activeSpans.length - 1; i >= 0; i--) {
+          const span = activeSpans[i];
+          const p = Math.min(1, (elapsed - span.at) / span.dur);
+          try { span.update(p); } catch (err) { console.error(err); }
+          if (p >= 1) activeSpans.splice(i, 1);
+        }
+      }
+      tabs[cur].style.setProperty('--p', Math.min(elapsed / dur, 1).toFixed(4));
+      if (elapsed >= dur) activate(ORDER[(ORDER.indexOf(cur) + 1) % ORDER.length]);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  ORDER.forEach(k => tabs[k].addEventListener('click', () => activate(k)));
+  document.querySelector('.tabbar').addEventListener('keydown', e => {
+    const delta = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
+    if (!delta) return;
+    e.preventDefault();
+    const next = ORDER[(ORDER.indexOf(cur) + delta + ORDER.length) % ORDER.length];
+    activate(next);
+    tabs[next].focus();
+  });
+
+  // play continuously — no pause on hover; only stop when the tab is hidden
+  document.addEventListener('visibilitychange', () => { hiddenPause = document.hidden; });
+  reduceMq.addEventListener('change', () => activate(cur, { instant: true, force: true }));
+
+  const stage = document.querySelector('.stage');
+  // report our content height so the host iframe can size to it (no bottom clip)
+  const postHeight = () => {
+    if (window.parent !== window) {
+      window.parent.postMessage(
+        { type: 'lb-hero-height', height: Math.ceil(document.documentElement.getBoundingClientRect().height) + 2 },
+        '*'
+      );
+    }
+  };
+  new ResizeObserver(entries => {
+    canvas.style.transform = `scale(${entries[0].contentRect.width / 1080})`;
+    postHeight();
+  }).observe(stage);
+  window.addEventListener('load', postHeight);
+
+  window.__hero = {
+    pause() { apiPause = true; },
+    play() { apiPause = false; },
+    finish(key) { activate(key, { instant: true, force: true }); finishScene(key); },
+    seek(key, ms) {
+      activate(key, { instant: true, force: true });
+      const panel = panels[key];
+      panel.classList.add('notransition');
+      elapsed = ms;
+      const tl = timelines[key];
+      while (stepIdx < tl.steps.length && tl.steps[stepIdx].at <= ms) {
+        const step = tl.steps[stepIdx++];
+        if (step.fn) { step.fn(); continue; }
+        // completed spans must apply inline so later steps (e.g. clear-typed) win
+        const p = Math.min(1, (ms - step.at) / step.dur);
+        if (p >= 1) step.update(1); else { step.update(p); activeSpans.push(step); }
+      }
+      void panel.offsetWidth;
+      panel.classList.remove('notransition');
+      tabs[key].style.setProperty('--p', Math.min(ms / tl.dur, 1).toFixed(4));
+    },
+    get state() { return { scene: cur, elapsed, paused: isPaused() }; },
+  };
+
+  activate('recall', { force: true });
+  requestAnimationFrame(frame);
+})();
+</script>
+
+<style id="fonts">
+@font-face { font-family: 'Sohne'; font-style: normal; font-weight: 400; font-display: block; src: url('fonts/sohne-400.woff2') format('woff2'); }
+@font-face { font-family: 'Sohne'; font-style: normal; font-weight: 600; font-display: block; src: url('fonts/sohne-600.woff2') format('woff2'); }
+@font-face { font-family: 'Meraki'; font-style: normal; font-weight: 400; font-display: block; src: url('fonts/meraki-400.woff2') format('woff2'); }
+</style>
+</body>
+</html>
