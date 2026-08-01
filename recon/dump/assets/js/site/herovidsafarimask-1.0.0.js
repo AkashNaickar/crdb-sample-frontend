@@ -1,0 +1,1 @@
+document.addEventListener('DOMContentLoaded',function(){var s=document.createElement('style');s.textContent='.hero_vid{-webkit-mask-image:radial-gradient(140% 88% at 50% 0%, #000 60%, transparent 100%);-webkit-mask-repeat:no-repeat;-webkit-mask-size:100% 100%;}';document.head.appendChild(s);});

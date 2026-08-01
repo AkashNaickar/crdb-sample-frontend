@@ -1,0 +1,1 @@
+(function(){function ph(e){var d=e&&e.data;if(!d||d.type!=='lb-hero-height')return;var h=parseInt(d.height,10);if(!h||h<1)return;var f=document.querySelectorAll('iframe[data-lb-hero]');for(var i=0;i<f.length;i++){f[i].style.height=h+'px';}}window.addEventListener('message',ph);})();
