@@ -119,15 +119,16 @@ Deployed on Vercel as a static project:
 - Project root directory: `site`
 - No build step; Vercel serves `site/` directly.
 
-The GitHub repository is connected to the Vercel project, so pushes to `main`
-deploy automatically. To publish the same directory manually with the CLI:
+The GitHub repository is connected to the Vercel project (Root Directory
+`site`), so pushes to `main` deploy automatically. To publish manually, run
+from the repository root:
 
 ```bash
-vercel deploy site --prod
+vercel deploy --prod
 ```
 
 `site/.vercelignore` keeps local `.env*` files and Vercel metadata out of the
-manual upload, so only the static deliverable is served.
+upload, so only the static deliverable is served.
 
 ## Roadmap
 
