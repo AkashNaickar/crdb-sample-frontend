@@ -1,0 +1,14 @@
+{
+  "name": "crdb-sample-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static rebuild of the littlebird.ai home page from captured assets.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test scripts/check-site.test.mjs",
+    "serve": "node scripts/serve.mjs site"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

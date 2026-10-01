@@ -17,3 +17,11 @@ node_modules/
 
 # Logs
 *.log
+
+# Local reverse-engineering scrape: third-party capture, not part of the deliverable
+recon/
+
+# Vercel
+.vercel/
+.vercel
+.env*
