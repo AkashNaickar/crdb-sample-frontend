@@ -23,3 +23,5 @@ recon/
 
 # Vercel
 .vercel/
+.vercel
+.env*
