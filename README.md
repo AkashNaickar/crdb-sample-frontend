@@ -2,6 +2,7 @@
 
 > A pixel-oriented static rebuild of the [littlebird.ai](https://littlebird.ai) home page, remade as plain HTML/CSS/JS from captured assets and reverse-engineered interactions.
 
+[![Featured by Awesome REA](https://raw.githubusercontent.com/reacher-z/Awesome-REA/477658fa73f6860e86cd1fc526657c2efdc25194/assets/featured-by-awesome-rea-inline.svg)](https://awesomerea.org/resources/littlebird-static-rebuild-case/)
 [![CI](https://github.com/AkashNaickar/crdb-sample-frontend/actions/workflows/ci.yml/badge.svg)](https://github.com/AkashNaickar/crdb-sample-frontend/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Live demo](https://img.shields.io/badge/demo-live-success)](https://crdb-sample-frontend.vercel.app)
